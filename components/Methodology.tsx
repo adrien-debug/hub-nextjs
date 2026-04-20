@@ -16,48 +16,121 @@ export default function Methodology() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-0">
           
-          {/* Phase 1 */}
+          {/* Phase 1 : Schéma Opérationnel */}
           <div className="lg:col-span-5 pr-0 lg:pr-16">
-            <div className="font-mono text-slate-600 text-[10px] mb-8 tracking-widest">PHASE 1 // CORE</div>
+            <div className="flex justify-between items-end mb-8">
+              <div className="font-mono text-slate-600 text-[10px] tracking-widest">PHASE 1 // CORE</div>
+              <div className="font-mono text-[#5eead4]/80 text-[10px] tracking-widest flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-[#5eead4] rounded-full animate-pulse cyan-glow"></span>
+                T+ 00:00 &rarr; ???:??
+              </div>
+            </div>
+            
             {/* Accent Typographique: "Incubate" en cyan assumé */}
-            <h3 className="text-6xl md:text-8xl font-black tracking-tighter text-[#5eead4]/90 mb-12 uppercase leading-[0.85]">
+            <h3 className="text-6xl md:text-8xl font-black tracking-tighter text-[#5eead4]/90 mb-16 uppercase leading-[0.85]">
               Incubate
             </h3>
             
-            <div className="w-12 h-1 bg-[#5eead4]/40 mb-24"></div>
-            
-            <div className="font-mono text-xs text-slate-400 uppercase tracking-wider">
-              {/* Espacements et alignements irréguliers avec micro-connexions cyan */}
-              <div className="flex items-start gap-6 mb-16 group cursor-crosshair">
-                <div className="flex items-center gap-4">
-                  <span className="text-[#5eead4]/70 transition-colors group-hover:text-[#5eead4]">01</span>
-                  <div className="w-4 h-px bg-[#5eead4]/30 group-hover:w-12 group-hover:bg-[#5eead4] transition-all duration-500 ease-out"></div>
+            {/* Timeline / Flow System */}
+            <div className="relative pl-10 font-mono">
+              {/* Main Axis (Track) */}
+              <div className="absolute left-0 top-2 bottom-0 w-px bg-white/10"></div>
+              {/* Active Flow (Cyan) */}
+              <div className="absolute left-0 top-2 h-[45%] w-[2px] bg-gradient-to-b from-[#5eead4] to-[#5eead4]/10 cyan-glow"></div>
+
+              {/* Graduations (Ticks) */}
+              <div className="absolute left-[-3px] top-[20%] w-1.5 h-px bg-slate-600"></div>
+              <div className="absolute left-[-3px] top-[40%] w-1.5 h-px bg-slate-600"></div>
+              <div className="absolute left-[-3px] top-[60%] w-1.5 h-px bg-slate-600"></div>
+              <div className="absolute left-[-3px] top-[80%] w-1.5 h-px bg-slate-600"></div>
+
+              {/* Steps (Nodes) */}
+              <div className="space-y-16 relative z-10">
+                
+                {/* Step 1 - Active */}
+                <div className="relative group cursor-crosshair">
+                  {/* Node Dot */}
+                  <div className="absolute left-[-43px] top-1.5 w-2 h-2 bg-[#0A0A0A] border-[1.5px] border-[#5eead4] rounded-full group-hover:bg-[#5eead4] transition-colors cyan-glow"></div>
+                  {/* Connector Line */}
+                  <div className="absolute left-[-35px] top-2.5 w-6 h-px bg-[#5eead4]/40 group-hover:bg-[#5eead4] transition-colors"></div>
+
+                  <div className="ml-0">
+                    <div className="text-[9px] text-[#5eead4]/70 mb-2 flex items-center gap-3 tracking-widest">
+                      <span>[ SEQ.01 ]</span>
+                      <span className="w-4 h-px bg-slate-700"></span>
+                      <span className="text-slate-500">VALIDATION</span>
+                    </div>
+                    <div className="text-sm text-slate-300 uppercase tracking-wider group-hover:text-white transition-colors leading-relaxed">
+                      Strategic validation &<br/>market analysis
+                    </div>
+                    {/* Micro-metrics */}
+                    <div className="mt-4 flex gap-2 text-[8px] text-slate-500 tracking-widest">
+                      <span className="bg-white/5 px-2 py-1 border border-white/5">STATUS: OPTIMAL</span>
+                      <span className="bg-white/5 px-2 py-1 border border-white/5 text-[#5eead4]/60">SYNC</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="leading-relaxed group-hover:text-white transition-colors">Strategic validation &<br/>market analysis</span>
-              </div>
-              
-              <div className="flex items-start gap-6 mb-24 ml-12 group cursor-crosshair">
-                <div className="flex items-center gap-4">
-                  <span className="text-[#5eead4]/70 transition-colors group-hover:text-[#5eead4]">02</span>
-                  <div className="w-4 h-px bg-[#5eead4]/30 group-hover:w-12 group-hover:bg-[#5eead4] transition-all duration-500 ease-out"></div>
+
+                {/* Step 2 - Offset */}
+                <div className="relative group cursor-crosshair">
+                  <div className="absolute left-[-43px] top-1.5 w-2 h-2 bg-[#0A0A0A] border-[1.5px] border-[#5eead4]/50 rounded-full group-hover:border-[#5eead4] group-hover:bg-[#5eead4] transition-colors"></div>
+                  <div className="absolute left-[-35px] top-2.5 w-16 h-px bg-white/10 group-hover:bg-[#5eead4]/60 transition-colors"></div>
+
+                  <div className="ml-10">
+                    <div className="text-[9px] text-slate-500 mb-2 flex items-center gap-3 tracking-widest group-hover:text-[#5eead4]/70 transition-colors">
+                      <span>[ SEQ.02 ]</span>
+                      <span className="w-4 h-px bg-slate-700"></span>
+                      <span className="text-slate-600">PROTOTYPING</span>
+                    </div>
+                    <div className="text-sm text-slate-400 uppercase tracking-wider group-hover:text-white transition-colors leading-relaxed">
+                      Rapid prototyping on<br/>Hearst infrastructure
+                    </div>
+                    <div className="mt-4 flex gap-2 text-[8px] text-slate-600 tracking-widest">
+                      <span className="bg-white/5 px-2 py-1 border border-white/5">LOAD: 84%</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="leading-relaxed group-hover:text-white transition-colors">Rapid prototyping on<br/>Hearst infrastructure</span>
-              </div>
-              
-              <div className="flex items-start gap-6 mb-12 ml-4 group cursor-crosshair">
-                <div className="flex items-center gap-4">
-                  <span className="text-[#5eead4]/70 transition-colors group-hover:text-[#5eead4]">03</span>
-                  <div className="w-4 h-px bg-[#5eead4]/30 group-hover:w-12 group-hover:bg-[#5eead4] transition-all duration-500 ease-out"></div>
+
+                {/* Step 3 - Offset */}
+                <div className="relative group cursor-crosshair">
+                  <div className="absolute left-[-43px] top-1.5 w-2 h-2 bg-[#0A0A0A] border-[1.5px] border-white/20 rounded-full group-hover:border-[#5eead4] group-hover:bg-[#5eead4] transition-colors"></div>
+                  <div className="absolute left-[-35px] top-2.5 w-8 h-px bg-white/10 group-hover:bg-[#5eead4]/60 transition-colors"></div>
+
+                  <div className="ml-2">
+                    <div className="text-[9px] text-slate-500 mb-2 flex items-center gap-3 tracking-widest group-hover:text-[#5eead4]/70 transition-colors">
+                      <span>[ SEQ.03 ]</span>
+                      <span className="w-4 h-px bg-slate-700"></span>
+                      <span className="text-slate-600">ASSEMBLY</span>
+                    </div>
+                    <div className="text-sm text-slate-400 uppercase tracking-wider group-hover:text-white transition-colors leading-relaxed">
+                      Team assembly &<br/>resource allocation
+                    </div>
+                    <div className="mt-4 flex gap-2 text-[8px] text-slate-600 tracking-widest">
+                      <span className="bg-white/5 px-2 py-1 border border-white/5">ALLOCATION: PENDING</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="leading-relaxed group-hover:text-white transition-colors">Team assembly &<br/>resource allocation</span>
-              </div>
-              
-              <div className="flex items-start gap-6 ml-8 group cursor-crosshair">
-                <div className="flex items-center gap-4">
-                  <span className="text-[#5eead4]/70 transition-colors group-hover:text-[#5eead4]">04</span>
-                  <div className="w-4 h-px bg-[#5eead4]/30 group-hover:w-12 group-hover:bg-[#5eead4] transition-all duration-500 ease-out"></div>
+
+                {/* Step 4 - Offset */}
+                <div className="relative group cursor-crosshair">
+                  <div className="absolute left-[-43px] top-1.5 w-2 h-2 bg-[#0A0A0A] border-[1.5px] border-white/20 rounded-full group-hover:border-[#5eead4] group-hover:bg-[#5eead4] transition-colors"></div>
+                  <div className="absolute left-[-35px] top-2.5 w-24 h-px bg-white/10 group-hover:bg-[#5eead4]/60 transition-colors"></div>
+
+                  <div className="ml-16">
+                    <div className="text-[9px] text-slate-500 mb-2 flex items-center gap-3 tracking-widest group-hover:text-[#5eead4]/70 transition-colors">
+                      <span>[ SEQ.04 ]</span>
+                      <span className="w-4 h-px bg-slate-700"></span>
+                      <span className="text-slate-600">ACCELERATION</span>
+                    </div>
+                    <div className="text-sm text-slate-400 uppercase tracking-wider group-hover:text-white transition-colors leading-relaxed">
+                      Launch & growth<br/>acceleration
+                    </div>
+                    <div className="mt-4 flex gap-2 text-[8px] text-slate-600 tracking-widest">
+                      <span className="bg-white/5 px-2 py-1 border border-white/5">STATUS: LOCKED</span>
+                    </div>
+                  </div>
                 </div>
-                <span className="leading-relaxed group-hover:text-white transition-colors">Launch & growth<br/>acceleration</span>
+
               </div>
             </div>
           </div>

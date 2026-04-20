@@ -2,6 +2,18 @@
 
 Application Next.js frontend configurée pour tourner sur le port 6000 (via proxy).
 
+## 📋 Inventaire des Projets
+
+Ce projet contient également l'**inventaire complet** de tous les projets Hearst:
+
+- **Inventaire JSON**: `/project-inventory.json` - Base de données structurée de tous les projets
+- **Hub Web**: `/public/project-hub.html` - Interface web élégante pour visualiser tous les projets
+- **Pages détaillées**: `/public/projects/*.html` - Pages individuelles pour chaque projet
+
+### Accès rapide
+- 🌐 Ouvrir l'inventaire web: `open public/project-hub.html`
+- 📊 **15 projets** classés: 5 Live | 7 Coming Soon | 1 Future
+
 ## Configuration
 
 - **Framework**: Next.js 15.1

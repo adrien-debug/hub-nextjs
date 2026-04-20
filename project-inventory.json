@@ -1,0 +1,302 @@
+{
+  "metadata": {
+    "generated": "2026-04-21",
+    "hub_location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Hub",
+    "total_projects": 15
+  },
+  "projects": {
+    "live": [
+      {
+        "id": "hub",
+        "name": "Hub",
+        "status": "live",
+        "category": "Frontend / Marketing",
+        "description": "Application Next.js frontend configurée pour tourner sur le port 6000 (via proxy). Site vitrine Hearst avec sections Hero, About, Methodology, Projects Live et Coming.",
+        "tech_stack": ["Next.js 15.1", "TypeScript", "Tailwind CSS", "React 19"],
+        "port": 6000,
+        "urls": {
+          "local": "http://localhost:6000",
+          "production": "https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app",
+          "github": "https://github.com/adrien-debug/hub-nextjs"
+        },
+        "logo": "/grid.svg",
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Hub"
+      },
+      {
+        "id": "hearst-os",
+        "name": "Hearst OS",
+        "status": "live",
+        "category": "AI Platform / Agent System",
+        "description": "Système d'action centré chat avec orchestration v2, artifacts file-backed, et missions récurrentes. Runtime multi-agents avec trace, LLM routing, cost tracking.",
+        "tech_stack": ["Next.js 16", "React 19", "Supabase", "PostgreSQL", "Zod", "OpenAI", "Anthropic"],
+        "port": 9000,
+        "urls": {
+          "local": "http://localhost:9000",
+          "production": "https://hearst-agents-production.up.railway.app"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/hearst-os",
+        "features": [
+          "V2 Runtime par défaut",
+          "Missions planifiées/autonomes",
+          "Artifacts file-backed (PDF, XLSX, markdown, JSON, CSV)",
+          "Connectors OAuth (Google, Slack)",
+          "Timeline observable",
+          "200 tests"
+        ]
+      },
+      {
+        "id": "hearst-app",
+        "name": "Hearst AI",
+        "status": "live",
+        "category": "SaaS Dashboard / AI Desktop",
+        "description": "AI-powered SaaS dashboard — agent desktop, Gmail/Calendar/Drive intégration, web scraper, orchestration multi-agents. Desktop Electron + Next.js 16.",
+        "tech_stack": ["Next.js 16", "React 19", "Express 5", "TypeScript", "Supabase", "Redis", "Electron"],
+        "ports": {
+          "backend": 3848,
+          "frontend": 3000,
+          "mcp": 3850,
+          "websocket": 3851
+        },
+        "urls": {
+          "local_backend": "http://localhost:3848",
+          "local_frontend": "http://localhost:3000",
+          "production": "https://hearst.app",
+          "api_production": "https://api.hearst.app"
+        },
+        "logo": "/packages/frontend/public/logo.svg",
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Hearst app",
+        "modules": [
+          "Home (/dashboard)",
+          "Inbox (/inbox)",
+          "Calendar (/calendar)",
+          "Files (/files)",
+          "Tasks (/tasks)",
+          "Apps (/apps)"
+        ]
+      },
+      {
+        "id": "mind",
+        "name": "MIND",
+        "status": "live",
+        "category": "Marketing Site",
+        "description": "Next.js (App Router) : page avec header + menu (ancres), hero, trois sections, footer, titre MIND. API pour le backend.",
+        "tech_stack": ["Next.js", "React", "TypeScript"],
+        "port": 8001,
+        "urls": {
+          "local": "http://localhost:8001",
+          "production": "https://mind.vercel.app",
+          "github": "https://github.com/adrien-debug/mind"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Live Projects/Mind"
+      },
+      {
+        "id": "netpool",
+        "name": "Netpool",
+        "status": "live",
+        "category": "eSIM Infrastructure / Fintech",
+        "description": "Institutional-grade white-label eSIM orchestration platform with centralized administration, shared data architectures, blockchain-verified asset registry (Polygon), and secure settlement via Fireblocks.",
+        "tech_stack": ["Next.js 16", "React 18", "PostgreSQL 16", "Redis", "Supabase", "Stripe", "Blockchain (Polygon)"],
+        "urls": {
+          "production": "Live on Vercel + Railway",
+          "github": "https://github.com/adrien-debug/netpool"
+        },
+        "logo": "/morpho-style/apps/hub/public/logo.svg",
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Live Projects/netpool",
+        "features": [
+          "221 Unit Tests + E2E Tests (Playwright)",
+          "HttpOnly JWT + CSRF + CSP + HSTS + Rate Limiting",
+          "i18n FR/EN",
+          "Stripe webhooks + reconciliation",
+          "eSIM Go + eSIM Access (dual provider with failover)",
+          "Background workers (Railway)"
+        ]
+      }
+    ],
+    "coming": [
+      {
+        "id": "aigent-wallet",
+        "name": "Aigent Wallet",
+        "status": "coming",
+        "category": "Crypto Wallet / Demo",
+        "description": "Next.js 14 (App Router) marketing site + wallet console with mock data.",
+        "tech_stack": ["Next.js 14", "React", "TypeScript", "Vitest", "Playwright"],
+        "port": 9000,
+        "urls": {
+          "local": "http://localhost:9000"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/Aigent-wallet",
+        "pages": [
+          "Marketing: /, /product, /security, /developers, /pricing, /about",
+          "Dashboard: /app"
+        ]
+      },
+      {
+        "id": "hashvault",
+        "name": "HashVault",
+        "status": "coming",
+        "category": "Fintech / Yield Vaults",
+        "description": "Dashboard fintech « institutional yield vaults » avec espace client + admin. Stockage en mémoire (mock DB).",
+        "tech_stack": ["Next.js 16", "React 19", "Tailwind v4", "TypeScript"],
+        "urls": {},
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/HashVault ",
+        "pages": [
+          "Client: /, /vaults, /invest",
+          "Admin: /admin, /admin/products, /admin/positions, /admin/users"
+        ]
+      },
+      {
+        "id": "objection",
+        "name": "Objection",
+        "status": "coming",
+        "category": "Legal AI / Agent",
+        "description": "Agent juridique ultra-spécialisé — Mémorandum, analyse, recherche jurisprudentielle, prescription, génération de documents.",
+        "tech_stack": ["Node.js", "TypeScript", "Anthropic AI"],
+        "port": 3500,
+        "urls": {
+          "local": "http://localhost:3500",
+          "frontend_production": "https://objection-adrien-nejkovics-projects.vercel.app",
+          "backend_production": "https://hearst-lawyer-ai-production.up.railway.app",
+          "github": "https://github.com/adrien-debug/lawyer-ai"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/Objection"
+      },
+      {
+        "id": "atlas",
+        "name": "Atlas",
+        "status": "coming",
+        "category": "DeFi / Trading Platform",
+        "description": "Multi-chain, multi-wallet, multi-DEX autonomous DeFi execution platform with AI agents, smart routing, pool discovery, and client-side wallet signing.",
+        "tech_stack": ["Node.js", "TypeScript", "AI Agents", "Multi-chain"],
+        "urls": {
+          "github": "https://github.com/adrienbeyondcrypto/atlas"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/atlas",
+        "features": [
+          "Real AI agent system (router, risk, liquidity, market, strategy, execution)",
+          "Smart routing engine",
+          "Multi-hop route finder",
+          "Order splitting optimizer",
+          "Pool discovery via GeckoTerminal",
+          "DCA/TWAP/limit/stop-loss strategies"
+        ]
+      },
+      {
+        "id": "dropship-platform",
+        "name": "Dropship Platform",
+        "status": "coming",
+        "category": "E-commerce / Dropshipping",
+        "description": "Multi-site dropshipping platform — Turborepo monorepo. Checkout Stripe avec prix Medusa serveur, OpenClaw AI, admin + storefront.",
+        "tech_stack": ["Next.js", "TypeScript", "Turborepo", "Stripe", "Medusa", "Vitest", "Playwright"],
+        "urls": {},
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/dropship-platform",
+        "quality": "SCORE OPÉRATIONNEL: 9.5/10, SCORE QUALITÉ CODE: 9.0/10",
+        "features": [
+          "Multi-site architecture",
+          "Stripe checkout sécurisé",
+          "OpenClaw AI integration",
+          "Admin + storefront",
+          "Rate limiting",
+          "CI: Vitest + Playwright"
+        ]
+      },
+      {
+        "id": "orchestra",
+        "name": "Orchestra",
+        "status": "coming",
+        "category": "DevTools / Orchestrator",
+        "description": "Desktop orchestrator for local dev stacks — Electron + React + TypeScript. Live process monitoring, intelligent agents (Advisor, Preventive, Auto-Fix, Performance, Onboarding).",
+        "tech_stack": ["Electron", "React", "TypeScript", "AI Agents (OpenAI, Anthropic, Ollama)"],
+        "urls": {},
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/orchestra",
+        "features": [
+          "Live process, port, CPU, RAM, Docker visibility",
+          "One-click actions: start/stop/restart",
+          "Global launcher (Cmd/Ctrl + Shift + Space)",
+          "YAML registry for services",
+          "5 intelligent agents",
+          "Multi-provider AI (OpenAI, Anthropic, Ollama)",
+          "macOS, Windows, Linux packaging"
+        ]
+      },
+      {
+        "id": "victor-next",
+        "name": "Victor",
+        "status": "coming",
+        "category": "AI Companion",
+        "description": "Companion Intelligence. Not an assistant. Not a tool. A living extension of your intent.",
+        "tech_stack": ["Next.js 16.2.3", "React 19.2.4", "Tailwind CSS 4", "TypeScript 5"],
+        "port": 3310,
+        "urls": {
+          "local": "http://localhost:3310"
+        },
+        "logo": null,
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Projects/victor-next"
+      }
+    ],
+    "future": [
+      {
+        "id": "future-one",
+        "name": "Future One / Qatar National Digital Core",
+        "status": "future",
+        "category": "Infrastructure / Data Center",
+        "description": "Codebase + knowledge base for the Qatar National Digital Core project: a 1 GW sovereign AI hyperscale data center to be developed in Qatar (Umm Alhoul Free Zone) by HEARST AI.",
+        "tech_stack": ["Next.js", "Express", "Supabase"],
+        "location": "/Users/adrienbeyondcrypto/Desktop/cursor-dev/_active/Qatar/Future One",
+        "project_details": {
+          "entity": "HEARST AI",
+          "local_jv": "Earth Qatar (HEARST AI + Al Thani)",
+          "country": "Qatar",
+          "site": "Umm Alhoul Free Zone (QFZA)",
+          "capacity": "1 GW IT (5 phases × 200 MW)",
+          "capex": "~7.7 Bn USD (range 5.4–10.0 Bn USD)",
+          "timeline": "60 months · first revenue at M24",
+          "designer": "Lord Norman Foster",
+          "construction": "Pastor Construction (Monaco)"
+        },
+        "logo": null
+      }
+    ]
+  },
+  "statistics": {
+    "by_status": {
+      "live": 5,
+      "coming": 7,
+      "future": 1
+    },
+    "by_category": {
+      "Frontend / Marketing": 1,
+      "AI Platform / Agent System": 1,
+      "SaaS Dashboard / AI Desktop": 1,
+      "Marketing Site": 1,
+      "eSIM Infrastructure / Fintech": 1,
+      "Crypto Wallet / Demo": 1,
+      "Fintech / Yield Vaults": 1,
+      "Legal AI / Agent": 1,
+      "DeFi / Trading Platform": 1,
+      "E-commerce / Dropshipping": 1,
+      "DevTools / Orchestrator": 1,
+      "AI Companion": 1,
+      "Infrastructure / Data Center": 1
+    },
+    "tech_stacks": {
+      "Next.js": 11,
+      "React": 9,
+      "TypeScript": 11,
+      "Supabase": 3,
+      "PostgreSQL": 2,
+      "Redis": 2,
+      "AI / LLM": 6,
+      "Stripe": 2,
+      "Blockchain": 2,
+      "Electron": 2
+    }
+  }
+}

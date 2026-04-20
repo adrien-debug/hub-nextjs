@@ -1,0 +1,117 @@
+{
+  "hearst_projects": {
+    "live": {
+      "hub": {
+        "name": "Hub",
+        "port": 6000,
+        "local": "http://localhost:6000",
+        "prod": "https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app",
+        "tech": ["Next.js 15.1", "React 19", "Tailwind"],
+        "category": "Marketing"
+      },
+      "hearst_os": {
+        "name": "Hearst OS",
+        "port": 9000,
+        "local": "http://localhost:9000",
+        "prod": "https://hearst-agents-production.up.railway.app",
+        "tech": ["Next.js 16", "Supabase", "AI"],
+        "category": "AI Platform"
+      },
+      "hearst_ai": {
+        "name": "Hearst AI",
+        "ports": {"frontend": 3000, "backend": 3848, "mcp": 3850},
+        "local_frontend": "http://localhost:3000",
+        "local_backend": "http://localhost:3848",
+        "prod": "https://hearst.app",
+        "api": "https://api.hearst.app",
+        "tech": ["Next.js 16", "Express 5", "Electron", "Supabase"],
+        "category": "SaaS Desktop"
+      },
+      "mind": {
+        "name": "MIND",
+        "port": 8001,
+        "local": "http://localhost:8001",
+        "prod": "https://mind.vercel.app",
+        "github": "https://github.com/adrien-debug/mind",
+        "tech": ["Next.js", "React"],
+        "category": "Marketing"
+      },
+      "netpool": {
+        "name": "Netpool",
+        "prod": "Vercel + Railway",
+        "tech": ["Next.js 16", "PostgreSQL", "Stripe", "Polygon"],
+        "category": "eSIM / Fintech"
+      }
+    },
+    "coming": {
+      "aigent": {
+        "name": "Aigent Wallet",
+        "port": 9000,
+        "tech": ["Next.js 14"],
+        "category": "Crypto"
+      },
+      "hashvault": {
+        "name": "HashVault",
+        "tech": ["Next.js 16"],
+        "category": "Fintech"
+      },
+      "objection": {
+        "name": "Objection",
+        "port": 3500,
+        "local": "http://localhost:3500",
+        "prod_frontend": "https://objection-adrien-nejkovics-projects.vercel.app",
+        "prod_backend": "https://hearst-lawyer-ai-production.up.railway.app",
+        "github": "https://github.com/adrien-debug/lawyer-ai",
+        "tech": ["Node.js", "Anthropic AI"],
+        "category": "Legal AI"
+      },
+      "atlas": {
+        "name": "Atlas",
+        "github": "https://github.com/adrienbeyondcrypto/atlas",
+        "tech": ["Node.js", "AI Agents", "Multi-chain"],
+        "category": "DeFi"
+      },
+      "dropship": {
+        "name": "Dropship Platform",
+        "tech": ["Next.js", "Turborepo", "Stripe", "Medusa"],
+        "category": "E-commerce",
+        "score": "9.5/10"
+      },
+      "orchestra": {
+        "name": "Orchestra",
+        "tech": ["Electron", "React", "AI"],
+        "category": "DevTools"
+      },
+      "victor": {
+        "name": "Victor",
+        "port": 3310,
+        "local": "http://localhost:3310",
+        "tech": ["Next.js 16.2.3", "React 19.2.4"],
+        "category": "AI Companion"
+      }
+    },
+    "future": {
+      "future_one": {
+        "name": "Future One / Qatar National Digital Core",
+        "capacity": "1 GW",
+        "capex": "7.7 Bn USD",
+        "location": "Qatar - Umm Alhoul Free Zone",
+        "designer": "Lord Norman Foster",
+        "category": "Infrastructure"
+      }
+    }
+  },
+  "stats": {
+    "total": 15,
+    "live": 5,
+    "coming": 7,
+    "future": 1
+  },
+  "tech_summary": {
+    "Next.js": 11,
+    "TypeScript": 11,
+    "React": 9,
+    "AI/LLM": 6,
+    "Supabase": 3
+  }
+}

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub - Hearst Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #4a90ff;
+            --success: #00ff88;
+            --border: #2a2a38;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        .back-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .category {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-card {
+            background: rgba(74, 144, 255, 0.1);
+            border: 1px solid rgba(74, 144, 255, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--accent-blue);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .link-card:hover {
+            background: rgba(74, 144, 255, 0.2);
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+        }
+
+        .link-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+
+        .link-url {
+            font-size: 1rem;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .commands {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: 'Courier New', monospace;
+            color: #e6edf3;
+        }
+
+        .command-line {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 1rem;
+        }
+
+        .command {
+            color: #58a6ff;
+        }
+
+        .comment {
+            color: #7d8590;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="../project-hub.html" class="back-link">← Retour à l'inventaire</a>
+    </div>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="status-badge">🟢 Live</div>
+            <h1>Hub</h1>
+            <div class="category">Frontend / Marketing</div>
+            <div class="description">
+                Application Next.js frontend configurée pour tourner sur le port 6000 (via proxy). Site vitrine Hearst avec sections Hero, About, Methodology, Projects Live et Coming.
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="info-label">Port Local</div>
+                <div class="info-value">:6000</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Framework</div>
+                <div class="info-value">Next.js 15.1</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Langage</div>
+                <div class="info-value">TypeScript</div>
+            </div>
+            <div class="info-card">
+                <div class="info-label">Styling</div>
+                <div class="info-value">Tailwind CSS</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Stack Technique</h2>
+            <div class="tech-stack">
+                <div class="tech-tag">Next.js 15.1</div>
+                <div class="tech-tag">React 19</div>
+                <div class="tech-tag">TypeScript</div>
+                <div class="tech-tag">Tailwind CSS</div>
+                <div class="tech-tag">Lucide React (icônes)</div>
+                <div class="tech-tag">Node.js Proxy</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">URLs & Déploiement</h2>
+            <div class="links-grid">
+                <a href="http://localhost:6000" class="link-card">
+                    <div class="link-label">Local Development</div>
+                    <div class="link-url">localhost:6000</div>
+                </a>
+                <a href="https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app" class="link-card">
+                    <div class="link-label">Production (Vercel)</div>
+                    <div class="link-url">hub-nextjs-*.vercel.app</div>
+                </a>
+                <a href="https://github.com/adrien-debug/hub-nextjs" class="link-card">
+                    <div class="link-label">Repository GitHub</div>
+                    <div class="link-url">github.com/adrien-debug/hub-nextjs</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Sections du Site</h2>
+            <ul class="features-list">
+                <li>Hero - Grande section d'accueil avec tagline et CTA</li>
+                <li>About - Explication de Hearst et statistiques clés</li>
+                <li>Methodology - Processus d'incubation et maîtrise opérationnelle</li>
+                <li>Projects Live - 5 projets opérationnels avec descriptions</li>
+                <li>Projects Coming - 2 projets en développement (pipeline)</li>
+                <li>Footer - Navigation, liens sociaux et légal</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Commandes</h2>
+            <div class="commands">
+                <div class="command-line">
+                    <div class="command">npm install</div>
+                    <div class="comment"># Installer les dépendances</div>
+                </div>
+                <div class="command-line">
+                    <div class="command">npm run dev</div>
+                    <div class="comment"># ⭐ Lancer en développement sur PORT 6000 (RÈGLE ABSOLUE)</div>
+                </div>
+                <div class="command-line">
+                    <div class="command">npm run dev:next</div>
+                    <div class="comment"># Lancer Next.js seul sur port 3000</div>
+                </div>
+                <div class="command-line">
+                    <div class="command">npm run build</div>
+                    <div class="comment"># Build de production</div>
+                </div>
+                <div class="command-line">
+                    <div class="command">npm start</div>
+                    <div class="comment"># Lancer en production</div>
+                </div>
+                <div class="command-line">
+                    <div class="command">npm run lint</div>
+                    <div class="comment"># Linter ESLint</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Architecture Technique</h2>
+            <div class="description" style="margin-top: 1rem;">
+                <p style="margin-bottom: 1rem;">
+                    Le port 6000 est réservé par Next.js pour X11. Pour respecter la règle absolue du port 6000, 
+                    un proxy Node.js a été mis en place.
+                </p>
+                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: 8px; font-family: monospace;">
+                    <pre style="color: var(--text-secondary);">
+┌─────────────┐      ┌──────────────┐      ┌────────────┐
+│  Browser    │─────▶│  Proxy 6000  │─────▶│ Next.js    │
+│ :6000       │      │ proxy-server │      │ :3000      │
+└─────────────┘      └──────────────┘      └────────────┘
+                    </pre>
+                </div>
+                <p style="margin-top: 1rem;">
+                    Le fichier <code>proxy-server.js</code> écoute sur le port 6000 et redirige toutes les requêtes 
+                    vers Next.js sur le port 3000, incluant WebSocket pour le HMR (Hot Module Reload).
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Structure du Projet</h2>
+            <div class="commands">
+                <pre>Hub/
+├── app/
+│   ├── api/          # API Routes
+│   ├── layout.tsx    # Layout principal
+│   ├── page.tsx      # Page d'accueil
+│   └── globals.css   # Styles globaux
+├── components/
+│   ├── Hero.tsx      # Section Hero
+│   ├── About.tsx     # Section About
+│   ├── Methodology.tsx
+│   ├── ProjectsLive.tsx
+│   ├── ProjectsComing.tsx
+│   └── Footer.tsx
+├── public/
+│   └── grid.svg      # Background pattern
+├── proxy-server.js   # Serveur proxy
+├── package.json
+├── tsconfig.json
+├── tailwind.config.ts
+└── next.config.ts</pre>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Règles Importantes</h2>
+            <ul class="features-list">
+                <li>PORT 6000 EN LOCAL - RÈGLE ABSOLUE ⭐</li>
+                <li>npm run dev lance automatiquement sur PORT 6000</li>
+                <li>Port 6000 via proxy Node.js (contourne restriction X11)</li>
+                <li>TypeScript strict activé</li>
+                <li>Tailwind CSS pour le styling</li>
+                <li>App Router (Next.js 13+)</li>
+                <li>Déploiement automatique sur Vercel</li>
+                <li>HMR/WebSocket fonctionnel via proxy</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Déploiement</h2>
+            <div class="description" style="margin-top: 1rem;">
+                <p style="margin-bottom: 1rem;">
+                    Le projet est connecté à Vercel. Chaque push sur <code>main</code> déclenche un déploiement automatique.
+                </p>
+                <div class="commands">
+                    <div class="command-line">
+                        <div class="command">git add .</div>
+                    </div>
+                    <div class="command-line">
+                        <div class="command">git commit -m "votre message"</div>
+                    </div>
+                    <div class="command-line">
+                        <div class="command">git push</div>
+                    </div>
+                    <div class="command-line">
+                        <div class="command">vercel --prod</div>
+                        <div class="comment"># Ou redéployer manuellement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

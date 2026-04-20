@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hearst Projects Hub - Inventaire des Projets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-card: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b0;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #4a90ff;
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --border: #2a2a38;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 3rem 0 2rem;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .status-live {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-coming {
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+            border: 1px solid var(--warning);
+        }
+
+        .status-future {
+            background: rgba(74, 144, 255, 0.2);
+            color: var(--accent-blue);
+            border: 1px solid var(--accent-blue);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.15);
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(74, 144, 255, 0.1);
+            color: var(--accent-blue);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(74, 144, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: rgba(74, 144, 255, 0.2);
+            border-color: var(--accent-blue);
+            transform: translateX(4px);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .features-list li {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .features-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+        }
+
+        .port-badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-cyan);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-family: 'Courier New', monospace;
+            margin-left: 0.5rem;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Hearst Projects Hub</h1>
+        <p>Inventaire complet des projets Hearst — Live, Coming Soon & Future</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">15</div>
+            <div class="stat-label">Projets Total</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Live</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Coming Soon</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Future</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- LIVE PROJECTS -->
+        <h2 class="section-title">🟢 Projets Live</h2>
+        <div class="projects-grid">
+            <!-- Hub -->
+            <div class="project-card">
+                <div class="status-badge status-live">Live</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Hub
+                        <span class="port-badge">:6000</span>
+                    </div>
+                    <div class="project-category">Frontend / Marketing</div>
+                </div>
+                <div class="project-description">
+                    Application Next.js frontend configurée pour tourner sur le port 6000 (via proxy). Site vitrine Hearst avec sections Hero, About, Methodology, Projects Live et Coming.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 15.1</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">React 19</span>
+                </div>
+                <div class="project-links">
+                    <a href="http://localhost:6000" class="project-link">🌐 Local</a>
+                    <a href="https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app" class="project-link">🚀 Production</a>
+                    <a href="https://github.com/adrien-debug/hub-nextjs" class="project-link">📦 GitHub</a>
+                </div>
+            </div>
+
+            <!-- Hearst OS -->
+            <div class="project-card">
+                <div class="status-badge status-live">Live</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Hearst OS
+                        <span class="port-badge">:9000</span>
+                    </div>
+                    <div class="project-category">AI Platform / Agent System</div>
+                </div>
+                <div class="project-description">
+                    Système d'action centré chat avec orchestration v2, artifacts file-backed, et missions récurrentes. Runtime multi-agents avec trace, LLM routing, cost tracking.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 16</span>
+                    <span class="tech-tag">React 19</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">OpenAI</span>
+                    <span class="tech-tag">Anthropic</span>
+                </div>
+                <ul class="features-list">
+                    <li>V2 Runtime par défaut</li>
+                    <li>Missions planifiées/autonomes</li>
+                    <li>Artifacts file-backed (PDF, XLSX, markdown)</li>
+                    <li>Connectors OAuth (Google, Slack)</li>
+                    <li>200 tests</li>
+                </ul>
+                <div class="project-links">
+                    <a href="http://localhost:9000" class="project-link">🌐 Local</a>
+                    <a href="https://hearst-agents-production.up.railway.app" class="project-link">🚀 Production</a>
+                </div>
+            </div>
+
+            <!-- Hearst AI -->
+            <div class="project-card">
+                <div class="status-badge status-live">Live</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Hearst AI
+                        <span class="port-badge">:3000</span>
+                        <span class="port-badge">:3848</span>
+                    </div>
+                    <div class="project-category">SaaS Dashboard / AI Desktop</div>
+                </div>
+                <div class="project-description">
+                    AI-powered SaaS dashboard — agent desktop, Gmail/Calendar/Drive intégration, web scraper, orchestration multi-agents. Desktop Electron + Next.js 16.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 16</span>
+                    <span class="tech-tag">Express 5</span>
+                    <span class="tech-tag">Supabase</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Electron</span>
+                </div>
+                <ul class="features-list">
+                    <li>6 modules: Home, Inbox, Calendar, Files, Tasks, Apps</li>
+                    <li>Gmail/Calendar/Drive OAuth</li>
+                    <li>MCP Server (port 3850)</li>
+                    <li>Agent WebSocket (port 3851)</li>
+                </ul>
+                <div class="project-links">
+                    <a href="http://localhost:3000" class="project-link">🌐 Frontend</a>
+                    <a href="http://localhost:3848" class="project-link">🔧 Backend</a>
+                    <a href="https://hearst.app" class="project-link">🚀 Production</a>
+                    <a href="https://api.hearst.app" class="project-link">🔌 API</a>
+                </div>
+            </div>
+
+            <!-- MIND -->
+            <div class="project-card">
+                <div class="status-badge status-live">Live</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        MIND
+                        <span class="port-badge">:8001</span>
+                    </div>
+                    <div class="project-category">Marketing Site</div>
+                </div>
+                <div class="project-description">
+                    Next.js (App Router) : page avec header + menu (ancres), hero, trois sections, footer, titre MIND. API pour le backend.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">TypeScript</span>
+                </div>
+                <div class="project-links">
+                    <a href="http://localhost:8001" class="project-link">🌐 Local</a>
+                    <a href="https://mind.vercel.app" class="project-link">🚀 Production</a>
+                    <a href="https://github.com/adrien-debug/mind" class="project-link">📦 GitHub</a>
+                </div>
+            </div>
+
+            <!-- Netpool -->
+            <div class="project-card">
+                <div class="status-badge status-live">Live</div>
+                <div class="project-header">
+                    <div class="project-name">Netpool</div>
+                    <div class="project-category">eSIM Infrastructure / Fintech</div>
+                </div>
+                <div class="project-description">
+                    Institutional-grade white-label eSIM orchestration platform with blockchain-verified asset registry (Polygon), and secure settlement via Fireblocks.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 16</span>
+                    <span class="tech-tag">PostgreSQL 16</span>
+                    <span class="tech-tag">Redis</span>
+                    <span class="tech-tag">Stripe</span>
+                    <span class="tech-tag">Polygon</span>
+                </div>
+                <ul class="features-list">
+                    <li>221 Unit Tests + E2E Tests (Playwright)</li>
+                    <li>HttpOnly JWT + CSRF + CSP + HSTS</li>
+                    <li>i18n FR/EN</li>
+                    <li>Stripe webhooks + reconciliation</li>
+                    <li>Dual eSIM provider with failover</li>
+                </ul>
+                <div class="project-links">
+                    <a href="#" class="project-link">🚀 Live on Vercel + Railway</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMING SOON PROJECTS -->
+        <h2 class="section-title">🟡 Projets Coming Soon</h2>
+        <div class="projects-grid">
+            <!-- Aigent Wallet -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Aigent Wallet
+                        <span class="port-badge">:9000</span>
+                    </div>
+                    <div class="project-category">Crypto Wallet / Demo</div>
+                </div>
+                <div class="project-description">
+                    Next.js 14 (App Router) marketing site + wallet console with mock data.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 14</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Vitest</span>
+                    <span class="tech-tag">Playwright</span>
+                </div>
+            </div>
+
+            <!-- HashVault -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">HashVault</div>
+                    <div class="project-category">Fintech / Yield Vaults</div>
+                </div>
+                <div class="project-description">
+                    Dashboard fintech « institutional yield vaults » avec espace client + admin. Stockage en mémoire (mock DB).
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 16</span>
+                    <span class="tech-tag">React 19</span>
+                    <span class="tech-tag">Tailwind v4</span>
+                </div>
+            </div>
+
+            <!-- Objection -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Objection
+                        <span class="port-badge">:3500</span>
+                    </div>
+                    <div class="project-category">Legal AI / Agent</div>
+                </div>
+                <div class="project-description">
+                    Agent juridique ultra-spécialisé — Mémorandum, analyse, recherche jurisprudentielle, prescription, génération de documents.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Anthropic AI</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://objection-adrien-nejkovics-projects.vercel.app" class="project-link">🚀 Frontend</a>
+                    <a href="https://hearst-lawyer-ai-production.up.railway.app" class="project-link">🔌 Backend</a>
+                    <a href="https://github.com/adrien-debug/lawyer-ai" class="project-link">📦 GitHub</a>
+                </div>
+            </div>
+
+            <!-- Atlas -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">Atlas</div>
+                    <div class="project-category">DeFi / Trading Platform</div>
+                </div>
+                <div class="project-description">
+                    Multi-chain, multi-wallet, multi-DEX autonomous DeFi execution platform with AI agents, smart routing, and pool discovery.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">AI Agents</span>
+                    <span class="tech-tag">Multi-chain</span>
+                </div>
+                <ul class="features-list">
+                    <li>6 AI agents (router, risk, liquidity, market, strategy, execution)</li>
+                    <li>Smart routing engine</li>
+                    <li>DCA/TWAP/limit/stop-loss strategies</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://github.com/adrienbeyondcrypto/atlas" class="project-link">📦 GitHub</a>
+                </div>
+            </div>
+
+            <!-- Dropship Platform -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">Dropship Platform</div>
+                    <div class="project-category">E-commerce / Dropshipping</div>
+                </div>
+                <div class="project-description">
+                    Multi-site dropshipping platform — Turborepo monorepo. Score opérationnel: 9.5/10, Code quality: 9.0/10.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Turborepo</span>
+                    <span class="tech-tag">Stripe</span>
+                    <span class="tech-tag">Medusa</span>
+                </div>
+                <ul class="features-list">
+                    <li>Multi-site architecture</li>
+                    <li>Stripe checkout sécurisé</li>
+                    <li>OpenClaw AI integration</li>
+                    <li>CI: Vitest + Playwright</li>
+                </ul>
+            </div>
+
+            <!-- Orchestra -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">Orchestra</div>
+                    <div class="project-category">DevTools / Orchestrator</div>
+                </div>
+                <div class="project-description">
+                    Desktop orchestrator for local dev stacks — Electron + React. Live process monitoring avec 5 intelligent agents.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Electron</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">AI (OpenAI, Anthropic, Ollama)</span>
+                </div>
+                <ul class="features-list">
+                    <li>Live process, port, CPU, RAM monitoring</li>
+                    <li>5 intelligent agents</li>
+                    <li>Global launcher (Cmd/Ctrl + Shift + Space)</li>
+                    <li>macOS, Windows, Linux packaging</li>
+                </ul>
+            </div>
+
+            <!-- Victor -->
+            <div class="project-card">
+                <div class="status-badge status-coming">Coming Soon</div>
+                <div class="project-header">
+                    <div class="project-name">
+                        Victor
+                        <span class="port-badge">:3310</span>
+                    </div>
+                    <div class="project-category">AI Companion</div>
+                </div>
+                <div class="project-description">
+                    Companion Intelligence. Not an assistant. Not a tool. A living extension of your intent.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js 16.2.3</span>
+                    <span class="tech-tag">React 19.2.4</span>
+                    <span class="tech-tag">Tailwind CSS 4</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FUTURE PROJECTS -->
+        <h2 class="section-title">🔵 Projets Future</h2>
+        <div class="projects-grid">
+            <!-- Future One -->
+            <div class="project-card">
+                <div class="status-badge status-future">Future</div>
+                <div class="project-header">
+                    <div class="project-name">Future One</div>
+                    <div class="project-category">Infrastructure / Data Center</div>
+                </div>
+                <div class="project-description">
+                    Qatar National Digital Core — 1 GW sovereign AI hyperscale data center in Qatar (Umm Alhoul Free Zone) by HEARST AI.
+                </div>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">Supabase</span>
+                </div>
+                <ul class="features-list">
+                    <li>Capacity: 1 GW IT (5 phases × 200 MW)</li>
+                    <li>CAPEX: ~7.7 Bn USD</li>
+                    <li>Timeline: 60 months</li>
+                    <li>Designer: Lord Norman Foster</li>
+                    <li>Construction: Pastor Construction</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Hearst Projects Hub — Inventaire généré le 21 avril 2026</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">15 projets | 5 Live | 7 Coming Soon | 1 Future</p>
+    </footer>
+</body>
+</html>
