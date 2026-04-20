@@ -19,26 +19,27 @@ Plateforme centralisée de gestion des projets Hearst avec système d'incubation
 
 ## 🏗️ Architecture
 
+**Mode principal** : Next.js 15 sert le front et les **Route Handlers** `app/api/*`, avec SQLite via `lib/db.ts`. L’admin (`/admin`) appelle `fetch('/api/...')` sur ce même origin (pas le serveur Express sauf configuration proxy externe).
+
+**Dossier `api/`** : backend Express + SQLite **autonome** (`npm run dev` dans `api/`), utile pour déploiement séparé ou scripts. Il n’est **pas** inclus dans le `tsc` du build Next (`tsconfig.json` exclut `api/`).
+
 ```
 Hub/
-├── app/                    # Next.js frontend
-├── api/                    # Backend Express + SQLite
-│   ├── src/
-│   │   ├── routes/
-│   │   │   ├── projects.ts
-│   │   │   ├── media.ts
-│   │   │   ├── auth.ts
-│   │   │   └── incubation.ts    # 🆕
-│   │   ├── services/
-│   │   │   └── incubation.service.ts    # 🆕
-│   │   └── db/
-│   │       ├── schema.sql        # Tables incubation
-│   │       └── seed-phases.ts    # 28 phases
-│   └── data/projects.db
-├── scripts/
-│   └── test-incubation.sh       # Tests API
-└── README.md
+├── app/
+│   ├── api/                 # REST Next (projets, auth, incubation)
+│   ├── admin/
+│   └── page.tsx
+├── lib/
+│   ├── db.ts                # SQLite + schéma (projets, médias, incubation)
+│   ├── auth.ts
+│   └── incubation.ts
+├── components/              # IncubationPipeline = UI statique (données API dispo via GET /api/incubation/phases)
+├── data/projects.db
+└── api/                     # Express optionnel (routes + services miroir)
+    └── src/
 ```
+
+Scripts : `scripts/test-api.sh`, `scripts/test-incubation.sh`.
 
 ## 🚀 Quick Start
 
@@ -61,6 +62,8 @@ npm run dev
 ```
 
 ## 📊 API Endpoints
+
+Les chemins ci-dessous existent sur **Next** (`app/api/...`) et en parallèle sur **Express** (`api/`). Exception : les routes **KPI** listées plus bas ne sont pour l’instant implémentées que côté **Express** (le service `lib/incubation.ts` côté Next pourrait s’y mapper ultérieurement).
 
 ### Incubation
 
@@ -85,7 +88,7 @@ GET /api/incubation/startups/:id/phases           # Phases startup
 PATCH /api/incubation/startups/:id/phases/:phaseId # Update phase
 ```
 
-#### KPIs
+#### KPIs (Express `api/` uniquement pour l’instant)
 ```bash
 GET /api/incubation/startups/:id/kpis    # KPIs d'une startup
 POST /api/incubation/startups/:id/kpis   # Ajouter KPI
@@ -144,8 +147,8 @@ DATABASE_PATH=./data/projects.db
 JWT_SECRET=your-secret
 API_KEY=your-api-key
 
-# Frontend
-NEXT_PUBLIC_API_URL=http://localhost:4000/api
+# Frontend (optionnel — l’app utilise par défaut les routes relatives /api/*)
+# NEXT_PUBLIC_API_URL=http://localhost:4000/api
 ```
 
 ## 📝 Logs

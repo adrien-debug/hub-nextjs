@@ -4,8 +4,9 @@ import { requireAuth } from '@/lib/auth';
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const auth = requireAuth(req);
   if (!auth.authorized) {
     return NextResponse.json(
@@ -15,7 +16,7 @@ export async function POST(
   }
 
   try {
-    const project = ProjectService.publish(params.id);
+    const project = ProjectService.publish(id);
 
     if (!project) {
       return NextResponse.json(

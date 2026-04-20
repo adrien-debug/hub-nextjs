@@ -4,10 +4,11 @@ import { requireAuth } from '@/lib/auth';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
-    const project = ProjectService.findById(params.id);
+    const project = ProjectService.findById(id);
 
     if (!project) {
       return NextResponse.json(
@@ -30,8 +31,9 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const auth = requireAuth(req);
   if (!auth.authorized) {
     return NextResponse.json(
@@ -42,7 +44,7 @@ export async function PATCH(
 
   try {
     const body = await req.json();
-    const project = ProjectService.update(params.id, body);
+    const project = ProjectService.update(id, body);
 
     if (!project) {
       return NextResponse.json(
@@ -66,8 +68,9 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const auth = requireAuth(req);
   if (!auth.authorized) {
     return NextResponse.json(
@@ -77,7 +80,7 @@ export async function DELETE(
   }
 
   try {
-    const success = ProjectService.delete(params.id);
+    const success = ProjectService.delete(id);
 
     if (!success) {
       return NextResponse.json(
