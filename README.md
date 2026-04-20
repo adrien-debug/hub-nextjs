@@ -16,11 +16,11 @@ Application Next.js frontend configurée pour tourner sur le port 6000 (via prox
 # Installer les dépendances
 npm install
 
-# Lancer en développement sur PORT 6000 (recommandé)
-npm run dev:6000
-
-# Lancer Next.js seul sur port 3000
+# ⭐ Lancer en développement sur PORT 6000 (RÈGLE ABSOLUE)
 npm run dev
+
+# Lancer Next.js seul sur port 3000 (développement backend uniquement)
+npm run dev:next
 
 # Lancer uniquement le proxy sur port 6000
 npm run proxy
@@ -114,7 +114,8 @@ vercel --prod
 ## Règles
 
 - **PORT 6000 EN LOCAL - RÈGLE ABSOLUE** ⭐
-- Port 6000 via proxy (`npm run dev:6000`)
+- `npm run dev` lance automatiquement sur PORT 6000
+- Port 6000 via proxy Node.js (contourne restriction X11 de Next.js)
 - TypeScript strict activé
 - Tailwind CSS pour le styling
 - App Router (Next.js 13+)
