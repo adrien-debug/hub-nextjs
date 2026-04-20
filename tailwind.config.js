@@ -9,12 +9,17 @@ module.exports = {
     extend: {
       colors: {
         accent: {
-          DEFAULT: "#8A1538",
-          dark: "#6d112c",
-          foreground: "#ffffff",
-          muted: "#f5eaed",
-          subtle: "rgba(138, 21, 56, 0.08)",
-          border: "rgba(138, 21, 56, 0.22)",
+          DEFAULT: "#5eead4",
+          dark: "#4dd4b8",
+          foreground: "#000000",
+          muted: "rgba(94, 234, 212, 0.10)",
+          subtle: "rgba(94, 234, 212, 0.06)",
+          border: "rgba(94, 234, 212, 0.25)",
+        },
+        dark: {
+          DEFAULT: "#0A0A0A",
+          card: "#111111",
+          border: "rgba(255, 255, 255, 0.08)",
         },
       },
     },

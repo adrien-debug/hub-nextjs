@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={hubLogoFont.variable}>
-      <body className="antialiased">
+      <body className="min-h-screen bg-white text-slate-600 antialiased">
         {children}
       </body>
     </html>

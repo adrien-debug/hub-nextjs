@@ -7,6 +7,8 @@ Application Next.js frontend configurée pour tourner sur le port 6000 (via prox
 - **Framework**: Next.js 15.1
 - **TypeScript**: Oui
 - **Styling**: Tailwind CSS
+- **Icônes**: `lucide-react` (flèches Hero / projets) ; réseaux sociaux en SVG inline dans `Footer.tsx` (Lucide ne fournit plus les pictos de marques)
+- **Thème**: fond clair institutionnel — `app/globals.css` définit `--background` blanc et `--foreground` slate ; l’ancien thème sombre global (body noir + texte blanc) cassait le contraste avec les sections `slate-*`
 - **Port Local**: 6000 (proxy) → 3000 (Next.js)
 - **Architecture**: Proxy Node.js contourne la restriction X11 du port 6000
 

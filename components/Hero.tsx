@@ -1,59 +1,48 @@
-import HubLogo from "@/components/HubLogo";
+import React from 'react';
+import { ArrowDown } from 'lucide-react';
+import HubLogo from '@/components/HubLogo';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-70" aria-hidden />
+    <section className="relative min-h-screen flex flex-col justify-center bg-[#0A0A0A] px-6 md:px-12 lg:px-24 overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" 
+           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '4rem 4rem' }}>
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="space-y-8">
-          <div className="flex justify-center">
-            <HubLogo />
-          </div>
-          <div className="inline-block">
-            <span className="px-4 py-2 bg-accent-subtle border border-accent-border rounded-full text-accent text-sm font-medium">
-              HEARST INFRASTRUCTURE ECOSYSTEM
-            </span>
-          </div>
+      <div className="relative z-10 max-w-5xl">
+        <div className="mb-10">
+          <HubLogo textColor="#ffffff" />
+        </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight">
-            Built to run<br />
-            <span className="text-accent">the future of work</span>
-          </h1>
-
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">
-            Mining at the core. Intelligence, connectivity, data build on top.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <a
-              href="#projects"
-              className="px-8 py-4 bg-accent hover:bg-accent-dark text-accent-foreground rounded-lg font-semibold transition-colors shadow-md shadow-accent/20"
-            >
-              Explore Projects
-            </a>
-            <a
-              href="#about"
-              className="px-8 py-4 bg-white text-accent border-2 border-accent rounded-lg font-semibold transition-colors hover:bg-accent-muted"
-            >
-              Learn More
-            </a>
-          </div>
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4] animate-pulse"></span>
+          <span className="uppercase tracking-widest text-xs font-semibold text-slate-400">
+            Hearst Infrastructure Ecosystem
+          </span>
+        </div>
+        
+        <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white leading-[1.05]">
+          Engineered to run <br />
+          <span className="text-[#5eead4]">the future of work.</span>
+        </h1>
+        
+        <p className="mt-8 text-xl text-slate-400 max-w-2xl leading-relaxed">
+          Mining at the core. Intelligence, connectivity, and data built on top. 
+          We own the stack to scale the unstoppable.
+        </p>
+        
+        <div className="mt-12 flex items-center gap-8">
+          <a href="#projects" className="bg-[#5eead4] text-black px-8 py-4 text-sm font-medium hover:bg-[#4dd4b8] transition-all duration-300">
+            Explore the Ecosystem
+          </a>
+          <a href="#methodology" className="text-white px-2 py-4 text-sm font-medium border-b border-transparent hover:border-[#5eead4] transition-all duration-300">
+            Our Methodology
+          </a>
         </div>
       </div>
 
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-        <div className="animate-bounce">
-          <svg
-            className="w-6 h-6 text-accent/50"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
+      <div className="absolute bottom-12 left-6 md:left-12 lg:left-24 animate-bounce">
+        <ArrowDown className="w-5 h-5 text-[#5eead4] stroke-[1.5]" />
       </div>
     </section>
   );

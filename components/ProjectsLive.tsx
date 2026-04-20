@@ -1,86 +1,53 @@
-const projects = [
-  {
-    name: "Onyx Pay",
-    category: "Crypto Payment Platform",
-    description:
-      "White-label crypto payment platform for luxury retail and hospitality, offering AI-driven reconciliation and branded acceptance with strong operational control.",
-    icon: "💳",
-  },
-  {
-    name: "WeMine",
-    category: "Mining Platform",
-    description:
-      "Crypto platform where users buy NFTs representing automated mining contracts, earning passive income from Bitcoin, Dogecoin, and Litecoin rewards.",
-    icon: "⛏️",
-  },
-  {
-    name: "NetPool",
-    category: "eSIM Provider",
-    description:
-      "Next-generation eSIM provider enabling instant mobile connectivity anywhere in just a few clicks, designed to become shareable between users.",
-    icon: "📡",
-  },
-  {
-    name: "Agora Hub",
-    category: "Web3 Arena",
-    description:
-      "Building the ultimate Web3 arena, a hub for authentic, gamified experiences that connects users, investors, and projects for mutual growth.",
-    icon: "🎮",
-  },
-  {
-    name: "Bull21",
-    category: "Web3 Growth Agency",
-    description:
-      "Web3 growth agency combining gamification, viral content, and community psychology to transform projects into self-reinforcing engagement loops.",
-    icon: "🚀",
-  },
-];
+import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 
 export default function ProjectsLive() {
   return (
-    <section id="projects" className="py-32 bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <span className="px-4 py-2 bg-accent-subtle border border-accent-border rounded-full text-accent text-sm font-bold">
-              ● LIVE PROJECTS
+    <section id="projects" className="py-32 px-6 md:px-12 lg:px-24 bg-white border-t border-slate-100">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#5eead4]"></span>
+            <span className="uppercase tracking-widest text-xs font-semibold text-slate-500">
+              Live Ventures
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">Active Ventures</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore the applications built on top of the Hearst infrastructure
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900">
+            Running on Hearst.
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-accent transition-colors shadow-sm hover:shadow-md"
-            >
-              <div className="relative p-8">
-                <div className="text-5xl mb-4">{project.icon}</div>
-
-                <div className="mb-2">
-                  <span className="text-xs font-semibold text-accent uppercase tracking-wider">
-                    {project.category}
-                  </span>
-                </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{project.name}</h3>
-
-                <p className="text-gray-600 leading-relaxed mb-6">{project.description}</p>
-
-                <button
-                  type="button"
-                  className="w-full px-6 py-3 bg-accent hover:bg-accent-dark text-accent-foreground rounded-lg font-semibold transition-colors group-hover:shadow-md"
-                >
-                  Explore Project
-                  <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6">
+          
+          {[
+            { name: "Onyx Pay", cat: "Luxury Crypto Payment", desc: "White-label reconciliation and branded acceptance with absolute operational control." },
+            { name: "WeMine", cat: "Automated Hashrate", desc: "Tokenized mining contracts yielding passive rewards across Bitcoin, Dogecoin, and Litecoin." },
+            { name: "NetPool", cat: "Global Connectivity", desc: "Next-generation, shareable eSIM infrastructure enabling instant global access." }
+          ].map((project, i) => (
+            <div key={i} className="md:col-span-2 group relative bg-white border border-slate-200 p-8 hover:-translate-y-1 hover:shadow-sm transition-all duration-300 overflow-hidden cursor-pointer">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest block mb-4">{project.cat}</span>
+              <h3 className="text-2xl font-bold text-slate-900 tracking-tight mb-4">{project.name}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">{project.desc}</p>
+              
+              <ArrowUpRight className="absolute top-8 right-8 w-5 h-5 text-[#5eead4] opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#5eead4] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             </div>
           ))}
+
+          {[
+            { name: "Agora Hub", cat: "Web3 Arena", desc: "The ultimate nexus for authentic, gamified experiences connecting users, investors, and builders." },
+            { name: "Bull21", cat: "Behavioral Growth", desc: "Engineering viral loops and community psychology to transform projects into self-reinforcing ecosystems." }
+          ].map((project, i) => (
+            <div key={i} className="md:col-span-3 group relative bg-white border border-slate-200 p-10 hover:-translate-y-1 hover:shadow-sm transition-all duration-300 overflow-hidden cursor-pointer">
+              <span className="text-xs font-semibold text-slate-400 uppercase tracking-widest block mb-4">{project.cat}</span>
+              <h3 className="text-3xl font-bold text-slate-900 tracking-tight mb-4">{project.name}</h3>
+              <p className="text-slate-500 leading-relaxed max-w-md">{project.desc}</p>
+              
+              <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 text-[#5eead4] opacity-0 -translate-x-2 translate-y-2 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-300" />
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#5eead4] transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </div>
+          ))}
+
         </div>
       </div>
     </section>

@@ -1,114 +1,83 @@
+import React from "react";
+
+function IconX({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
+function IconGithub({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+  );
+}
+
+function IconLinkedin({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-accent-border">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold text-accent mb-4">HEARST</h3>
-            <p className="text-gray-600 leading-relaxed mb-6">
-              Redefining digital infrastructure for the future of work. Proprietary technology stack from silicon to
-              consensus.
+    <footer className="pt-24 pb-8 px-6 md:px-12 lg:px-24 bg-[#0A0A0A] border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+          <div className="md:col-span-1">
+            <div className="text-2xl font-extrabold tracking-tighter text-[#5eead4] mb-6">HUB</div>
+            <p className="text-sm text-slate-400 leading-relaxed pr-8">
+              Redefining digital infrastructure. Proprietary tech stack from silicon to consensus.
             </p>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-accent-muted hover:bg-accent-subtle border border-accent-border rounded-lg flex items-center justify-center text-accent transition-colors"
-                aria-label="Twitter"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                </svg>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-6">Platform</h4>
+            <ul className="space-y-4 text-sm text-slate-400">
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Hearst AI</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Hearst Connect</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Infrastructure</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Documentation</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-6">Company</h4>
+            <ul className="space-y-4 text-sm text-slate-400">
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Ventures</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-[#5eead4] transition-colors">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-widest mb-6">Connect</h4>
+            <div className="flex gap-6">
+              <a href="#" className="text-slate-500 hover:text-[#5eead4] transition-colors" aria-label="X">
+                <IconX className="w-5 h-5" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-accent-muted hover:bg-accent-subtle border border-accent-border rounded-lg flex items-center justify-center text-accent transition-colors"
-                aria-label="GitHub"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <a href="#" className="text-slate-500 hover:text-[#5eead4] transition-colors" aria-label="GitHub">
+                <IconGithub className="w-5 h-5" />
               </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-accent-muted hover:bg-accent-subtle border border-accent-border rounded-lg flex items-center justify-center text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden>
-                  <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                </svg>
+              <a href="#" className="text-slate-500 hover:text-[#5eead4] transition-colors" aria-label="LinkedIn">
+                <IconLinkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
-
-          <div>
-            <h4 className="text-gray-900 font-semibold mb-4">Platform</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Hearst AI
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Hearst Connect
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Infrastructure
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Documentation
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-gray-900 font-semibold mb-4">Company</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="#about" className="text-gray-600 hover:text-accent transition-colors">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="text-gray-600 hover:text-accent transition-colors">
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-600 hover:text-accent transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">© 2026 Hearst Infrastructure. All rights reserved.</p>
-          <div className="flex gap-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors">
-              Terms
-            </a>
-            <a href="#" className="text-gray-500 hover:text-accent transition-colors">
-              Legal
-            </a>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 font-medium">
+          <p>© 2026 Hearst Infrastructure. All rights reserved.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a>
+            <a href="#" className="hover:text-white transition-colors">Legal</a>
           </div>
         </div>
       </div>
