@@ -13,6 +13,15 @@ Backend professionnel pour la gestion des projets Hearst avec CRUD complet, gest
 - ✅ Pagination
 - ✅ Statistiques globales
 
+### Incubation (Nouveau 🆕)
+- ✅ Pipeline de 28 phases structuré (Application → Alumni)
+- ✅ Gestion des startups avec tracking complet
+- ✅ Suivi de progression par phase
+- ✅ KPIs granulaires par phase et par startup
+- ✅ Statistiques et analytics
+- ✅ Gestion de cohortes
+- ✅ Scoring et validation automatique
+
 ### Médias
 - ✅ Upload d'images (logos, screenshots, banners)
 - ✅ Optimisation automatique avec Sharp
@@ -419,6 +428,139 @@ Authorization: Bearer <token>
 | Upload média | ❌ | ✅ | ✅ |
 | Delete média | ❌ | ✅ | ✅ |
 | Gestion users | ❌ | ❌ | ✅ |
+
+---
+
+## 🚀 Incubation System
+
+### Vue d'ensemble
+
+Le système d'incubation gère un pipeline structuré de **28 phases** pour accompagner les startups depuis la candidature jusqu'au statut alumni.
+
+### Phases du pipeline
+
+1. **Application** (1-3 sem) - Candidature initiale
+2. **Initial Screening** (2-7 j) - Premier tri
+3. **Deep Review** (3-10 j) - Due diligence
+4. **Interview** (1-5 j) - Entretien équipe
+5. **Committee Decision** (1-7 j) - Décision admission
+6. **Onboarding** (1-2 sem) - Intégration
+7. **Goal Setting** (1 sem) - Définition OKRs
+8. **Product Validation** (2-4 sem) - Validation problème/solution
+9. **MVP Iteration** (2-6 sem) - Construction MVP
+10. **User Acquisition Testing** (2-4 sem) - Tests acquisition
+11. **Traction Validation** (3-6 sem) - Preuve marché
+12. **Business Model Refinement** (2-4 sem) - Optimisation monétisation
+13. **Metrics Tracking Setup** (1-2 sem) - Setup KPIs
+14. **Weekly Reporting** (continu) - Suivi régulier
+15. **Mentor Assignment** (1 sem) - Attribution mentors
+16. **Mentor Sessions** (continu) - Accompagnement
+17. **Milestone Tracking** (continu) - Suivi progression
+18. **Performance Review Mid** (1 sem) - Évaluation intermédiaire
+19. **Growth Acceleration** (3-6 sem) - Accélération croissance
+20. **Fundraising Prep** (2-4 sem) - Préparation levée
+21. **Pitch Deck Refinement** (1-2 sem) - Amélioration pitch
+22. **Financial Model** (1-2 sem) - Modèle financier
+23. **Data Room** (1-2 sem) - Préparation investisseurs
+24. **Investor Outreach** (2-6 sem) - Contact investisseurs
+25. **Demo Day Prep** (2-3 sem) - Préparation présentation
+26. **Demo Day** (1 j) - Présentation finale
+27. **Graduation** (immédiat) - Sortie programme
+28. **Alumni Tracking** (continu) - Suivi long terme
+
+### API Endpoints
+
+#### Phases
+```bash
+GET /api/incubation/phases              # Liste toutes les phases
+GET /api/incubation/phases/:id          # Détail d'une phase
+```
+
+#### Startups
+```bash
+GET /api/incubation/startups            # Liste startups (+ filtres)
+GET /api/incubation/startups/:id        # Détail startup
+POST /api/incubation/startups           # Créer startup
+PATCH /api/incubation/startups/:id      # Mettre à jour
+DELETE /api/incubation/startups/:id     # Supprimer
+```
+
+Filtres disponibles :
+- `status` : applicant, screening, accepted, active, graduated, alumni, rejected
+- `cohort` : ex. "2026-Q2"
+- `search` : recherche textuelle
+
+#### Progression phases
+```bash
+GET /api/incubation/startups/:id/phases           # Toutes les phases d'une startup
+PATCH /api/incubation/startups/:id/phases/:phaseId # Mettre à jour une phase
+```
+
+#### KPIs
+```bash
+GET /api/incubation/startups/:id/kpis    # KPIs d'une startup
+POST /api/incubation/startups/:id/kpis   # Ajouter un KPI
+```
+
+#### Statistics
+```bash
+GET /api/incubation/statistics           # Stats globales
+```
+
+### Exemples
+
+#### Créer une startup
+```bash
+POST /api/incubation/startups
+Content-Type: application/json
+
+{
+  "name": "SuperStartup",
+  "founders": ["John Doe", "Jane Smith"],
+  "category": "SaaS",
+  "problem": "Businesses struggle with X",
+  "solution": "We provide Y",
+  "cohort": "2026-Q2",
+  "pitch_deck_url": "https://example.com/deck.pdf",
+  "product_url": "https://demo.example.com",
+  "repo_url": "https://github.com/user/repo"
+}
+```
+
+#### Compléter une phase
+```bash
+PATCH /api/incubation/startups/:id/phases/1
+Content-Type: application/json
+
+{
+  "status": "completed",
+  "notes": "Application completed successfully",
+  "actual_deliverables": ["pitch_deck", "founder_profiles", "demo_link"],
+  "kpi_values": {
+    "completion_time": 12,
+    "quality_score": 85
+  }
+}
+```
+
+#### Ajouter un KPI
+```bash
+POST /api/incubation/startups/:id/kpis
+Content-Type: application/json
+
+{
+  "phase_id": 11,
+  "kpi_key": "weekly_growth_rate",
+  "kpi_value": "15.5",
+  "week_number": 4
+}
+```
+
+### Test du système
+```bash
+# Lancer le script de test
+./scripts/test-incubation.sh
+```
 
 ---
 

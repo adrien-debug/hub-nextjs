@@ -88,3 +88,74 @@ export interface ProjectFilters {
   search?: string;
   published?: boolean;
 }
+
+// ============= INCUBATION SYSTEM =============
+
+export type PhaseStatus = 'pending' | 'in_progress' | 'completed' | 'blocked' | 'skipped';
+
+export interface Phase {
+  id: number;
+  slug: string;
+  name: string;
+  description: string;
+  typical_duration_days: number;
+  validation_criteria: string[];
+  deliverables: string[];
+  kpis: string[];
+  order_index: number;
+}
+
+export interface StartupPhase {
+  id: string;
+  startup_id: string;
+  phase_id: number;
+  status: PhaseStatus;
+  started_at?: string;
+  completed_at?: string;
+  estimated_completion?: string;
+  actual_deliverables?: string[];
+  kpi_values?: Record<string, any>;
+  notes?: string;
+  blockers?: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Startup {
+  id: string;
+  name: string;
+  slug: string;
+  founders: string[];
+  pitch_deck_url?: string;
+  one_pager_url?: string;
+  product_url?: string;
+  repo_url?: string;
+  category?: string;
+  problem?: string;
+  solution?: string;
+  market_size?: string;
+  current_phase_id?: number;
+  overall_score?: number;
+  mentor_ids?: string[];
+  cohort?: string;
+  status: 'applicant' | 'screening' | 'accepted' | 'active' | 'graduated' | 'alumni' | 'rejected';
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IncubationKPI {
+  id: string;
+  startup_id: string;
+  phase_id: number;
+  kpi_key: string;
+  kpi_value: string | number;
+  recorded_at: string;
+  week_number?: number;
+}
+
+export interface IncubationFilters {
+  status?: string[];
+  cohort?: string;
+  phase_id?: number;
+  search?: string;
+}

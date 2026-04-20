@@ -60,6 +60,13 @@ export function initializeDatabase() {
       
       logger.info('Default admin user created (username: admin, password: admin123)');
     }
+
+    // Seed phases
+    const phaseCount = db.prepare('SELECT COUNT(*) as count FROM phases').get() as { count: number };
+    if (phaseCount.count === 0) {
+      const { seedPhases } = require('./seed-phases');
+      seedPhases();
+    }
     
   } catch (error) {
     logger.error('Failed to initialize database:', error);

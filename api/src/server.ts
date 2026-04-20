@@ -12,6 +12,7 @@ import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import projectsRouter from './routes/projects';
 import mediaRouter from './routes/media';
 import authRouter from './routes/auth';
+import incubationRouter from './routes/incubation';
 
 // Charger les variables d'environnement
 dotenv.config();
@@ -68,6 +69,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use('/api/projects', projectsRouter);
 app.use('/api/media', mediaRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/incubation', incubationRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {
