@@ -1,35 +1,41 @@
 import React from 'react';
 
+const comingProjects = [
+  { id: "X.01", name: "Thynk", cat: "Cognitive Mirroring", desc: "Mapping decisions and behavioral patterns." },
+  { id: "X.02", name: "Atlas", cat: "Global Intelligence", desc: "Macro data mapping and predictive analytics." }
+];
+
 export default function ProjectsComing() {
   return (
     <section className="py-32 px-6 md:px-12 lg:px-24 bg-[#0A0A0A] border-t border-white/5">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="uppercase tracking-widest text-xs font-semibold text-slate-400">
-              ⚡ In Development
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4">
-            The Pipeline.
-          </h2>
-          <p className="text-lg text-slate-400">
-            Next-generation infrastructure currently in stealth and incubation.
-          </p>
+        <div className="flex items-center gap-4 mb-24 border-b border-white/10 pb-8">
+          <span className="font-mono text-xs text-[#5eead4] uppercase tracking-widest">SYS.04</span>
+          <h2 className="text-sm font-bold tracking-widest uppercase text-white">The Pipeline</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { name: "Thynk", cat: "Cognitive Mirroring", desc: "Mapping decisions and behavioral patterns." },
-            { name: "Atlas", cat: "Global Intelligence", desc: "Macro data mapping and predictive analytics." }
-          ].map((project, i) => (
-            <div key={i} className="bg-[#111111] border border-white/5 p-12 relative overflow-hidden">
-              <span className="text-xs font-semibold text-slate-500 uppercase tracking-widest block mb-4">{project.cat}</span>
-              <h3 className="text-3xl font-bold text-white tracking-tight mb-4">{project.name}</h3>
-              <p className="text-slate-400">{project.desc}</p>
+        <div className="border-t border-white/10">
+          <div className="py-8 flex justify-between items-center text-xs font-mono text-slate-600 uppercase tracking-widest border-b border-white/5">
+            <span>Designation</span>
+            <span>Status</span>
+          </div>
+
+          {comingProjects.map((project, i) => (
+            <div key={i} className="group border-b border-white/5 py-12 flex flex-col md:flex-row md:items-center justify-between gap-8 hover:bg-white/[0.02] transition-colors cursor-not-allowed px-6 -mx-6">
+              <div className="flex items-center gap-8 md:gap-16">
+                <span className="font-mono text-xs text-slate-600">{project.id}</span>
+                <div>
+                  <h3 className="text-4xl md:text-6xl font-bold tracking-tighter text-white/40 group-hover:text-white transition-colors uppercase mb-2">{project.name}</h3>
+                  <div className="text-sm text-[#5eead4] font-mono">{project.cat}</div>
+                </div>
+              </div>
               
-              <div className="absolute -right-4 -bottom-6 text-7xl font-black text-white/[0.03] pointer-events-none select-none tracking-tighter">
-                [CLASSIFIED]
+              <div className="md:text-right flex flex-col md:items-end gap-2">
+                <p className="text-slate-500 font-light text-sm max-w-xs">{project.desc}</p>
+                <div className="inline-flex items-center gap-2 bg-white/5 px-3 py-1 mt-2">
+                  <div className="w-1 h-1 bg-slate-500"></div>
+                  <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest">Classified</span>
+                </div>
               </div>
             </div>
           ))}
