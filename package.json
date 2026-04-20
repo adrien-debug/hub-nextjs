@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run kill-ports && concurrently \"next dev -p 3000\" \"node proxy-server.js\"",
-    "kill-ports": "lsof -ti:3000,6000 | xargs kill -9 2>/dev/null || true",
+    "kill-ports": "lsof -ti:3000,4000 | xargs kill -9 2>/dev/null || true",
     "dev:next": "next dev -p 3000",
     "proxy": "node proxy-server.js",
     "build": "next build",

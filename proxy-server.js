@@ -2,7 +2,7 @@ const http = require('http');
 const httpProxy = require('http-proxy');
 
 const TARGET_PORT = 3000;
-const PROXY_PORT = 6000;
+const PROXY_PORT = 4000;
 
 const proxy = httpProxy.createProxyServer({
   target: `http://localhost:${TARGET_PORT}`,
