@@ -46,8 +46,30 @@ Hub/
 
 ## URL
 
+### Local
 - **Dev**: http://localhost:3000
 - **API Test**: http://localhost:3000/api
+
+### Production
+- **Vercel**: https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app
+- **GitHub**: https://github.com/adrien-debug/hub-nextjs
+
+## Déploiement
+
+### GitHub
+```bash
+git add .
+git commit -m "votre message"
+git push
+```
+
+### Vercel
+Le projet est connecté à Vercel. Chaque push sur `main` déclenche un déploiement automatique.
+
+Pour redéployer manuellement:
+```bash
+vercel --prod
+```
 
 ## Règles
 
@@ -55,3 +77,4 @@ Hub/
 - TypeScript strict activé
 - Tailwind CSS pour le styling
 - App Router (Next.js 13+)
+- Déploiement automatique sur Vercel
