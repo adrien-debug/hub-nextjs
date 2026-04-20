@@ -7,7 +7,7 @@ export default function Home() {
             Hub
           </h1>
           <p className="text-xl text-gray-600">
-            Frontend Next.js sur le port 3000
+            Frontend Next.js sur le port 6000
           </p>
         </div>
         
@@ -17,7 +17,7 @@ export default function Home() {
               Bienvenue
             </h2>
             <p className="text-gray-600">
-              Votre application Next.js est configurée et fonctionne sur localhost:3000
+              Votre application Next.js est configurée et fonctionne sur localhost:6000
             </p>
           </div>
           

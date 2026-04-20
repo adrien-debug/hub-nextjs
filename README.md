@@ -1,13 +1,14 @@
 # Hub - Frontend Next.js
 
-Application Next.js frontend configurée pour tourner sur le port 3000.
+Application Next.js frontend configurée pour tourner sur le port 6000 (via proxy).
 
 ## Configuration
 
 - **Framework**: Next.js 15.1
 - **TypeScript**: Oui
 - **Styling**: Tailwind CSS
-- **Port**: 3000 (6000 est réservé par Next.js pour X11)
+- **Port Local**: 6000 (proxy) → 3000 (Next.js)
+- **Architecture**: Proxy Node.js contourne la restriction X11 du port 6000
 
 ## Commandes
 
@@ -15,13 +16,19 @@ Application Next.js frontend configurée pour tourner sur le port 3000.
 # Installer les dépendances
 npm install
 
-# Lancer en développement (port 3000)
+# Lancer en développement sur PORT 6000 (recommandé)
+npm run dev:6000
+
+# Lancer Next.js seul sur port 3000
 npm run dev
+
+# Lancer uniquement le proxy sur port 6000
+npm run proxy
 
 # Build de production
 npm run build
 
-# Lancer en production (port 3000)
+# Lancer en production
 npm start
 
 # Linter
@@ -47,12 +54,27 @@ Hub/
 ## URL
 
 ### Local
-- **Dev**: http://localhost:3000
-- **API Test**: http://localhost:3000/api
+- **Dev (Port 6000)**: http://localhost:6000 ⭐ **RÈGLE ABSOLUE**
+- **API Test**: http://localhost:6000/api
+- **Next.js Direct**: http://localhost:3000 (backend)
 
 ### Production
 - **Vercel**: https://hub-nextjs-b2axjy5ur-adrien-nejkovics-projects.vercel.app
 - **GitHub**: https://github.com/adrien-debug/hub-nextjs
+
+## Architecture
+
+### Proxy sur Port 6000
+Le port 6000 est réservé par Next.js pour X11. Pour respecter la règle absolue du port 6000, un proxy Node.js a été mis en place:
+
+```
+┌─────────────┐      ┌──────────────┐      ┌────────────┐
+│  Browser    │─────▶│  Proxy 6000  │─────▶│ Next.js    │
+│ :6000       │      │ proxy-server │      │ :3000      │
+└─────────────┘      └──────────────┘      └────────────┘
+```
+
+Le fichier `proxy-server.js` écoute sur le port 6000 et redirige toutes les requêtes vers Next.js sur le port 3000, incluant WebSocket pour le HMR (Hot Module Reload).
 
 ## Déploiement
 
@@ -73,8 +95,10 @@ vercel --prod
 
 ## Règles
 
-- Port 3000 configuré dans `package.json` (scripts dev et start)
+- **PORT 6000 EN LOCAL - RÈGLE ABSOLUE** ⭐
+- Port 6000 via proxy (`npm run dev:6000`)
 - TypeScript strict activé
 - Tailwind CSS pour le styling
 - App Router (Next.js 13+)
 - Déploiement automatique sur Vercel
+- HMR/WebSocket fonctionnel via proxy
