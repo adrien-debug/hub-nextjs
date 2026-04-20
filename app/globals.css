@@ -31,4 +31,31 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  .bg-grain {
+    position: relative;
+  }
+  
+  .bg-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .text-glitch {
+    text-shadow: 2px 0 #5eead4, -2px 0 rgba(255, 0, 85, 0.5);
+    animation: glitch 3s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: skewX(0deg); }
+    20% { transform: skewX(-2deg); }
+    40% { transform: skewX(2deg); }
+    60% { transform: skewX(-1deg); }
+    80% { transform: skewX(1deg); }
+  }
 }
