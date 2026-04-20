@@ -2,14 +2,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="pt-32 pb-12 px-6 md:px-12 lg:px-24 bg-[#0A0A0A] border-t border-white/10">
+    <footer className="pt-32 pb-12 px-6 md:px-12 lg:px-24 bg-dark border-t border-white/10">
       <div className="max-w-7xl mx-auto">
         
         <div className="mb-24 relative inline-block">
-          <h2 className="text-[12vw] leading-none font-black tracking-tighter text-white uppercase opacity-90">
+          <div className="text-[clamp(4rem,12vw,12rem)] leading-none font-black tracking-tighter text-white uppercase opacity-90">
             Hearst
-          </h2>
-          <div className="absolute bottom-4 right-[-20px] w-4 h-px bg-[#5eead4]/50"></div>
+          </div>
+          <div className="absolute bottom-4 right-[-20px] w-4 h-px bg-accent/50"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 border-t border-white/10 pt-12 mb-24">
@@ -54,8 +54,8 @@ export default function Footer() {
           <div className="flex gap-6 items-center">
             <span>© 2026 Hearst Infrastructure</span>
             <div className="hidden md:flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#5eead4] rounded-full cyan-glow animate-pulse"></span>
-              <span className="text-[#5eead4]/90">SYSTEM STATUS: OPERATIONAL</span>
+              <span className="w-2 h-2 bg-accent rounded-full cyan-glow animate-pulse"></span>
+              <span className="text-accent/90">SYSTEM STATUS: OPERATIONAL</span>
             </div>
           </div>
           <div className="flex gap-6">
