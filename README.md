@@ -6,6 +6,7 @@ Plateforme centralisée de gestion des projets Hearst avec système d'incubation
 
 ### Projets
 - Gestion complète des projets (CRUD)
+- Page d’accueil : sections **Live** et **Pipeline** alimentées par `ProjectService` (projets **publiés**, statuts `live` puis `coming` + `future`), ISR `revalidate` 60s sur `app/page.tsx`
 - Statuts : live, coming, future, archived
 - Médias : logos, screenshots, bannières
 - Authentification JWT avec rôles
