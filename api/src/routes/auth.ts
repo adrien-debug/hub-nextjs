@@ -48,7 +48,7 @@ router.post('/login', (req, res, next) => {
     );
     
     // Mettre à jour last_login
-    db.prepare('UPDATE users SET last_login = datetime("now") WHERE id = ?').run(user.id);
+    db.prepare("UPDATE users SET last_login = datetime('now') WHERE id = ?").run(user.id);
     
     logger.info(`User logged in: ${username}`);
     

@@ -1,0 +1,337 @@
+# 🚀 PROMPT AGENT : Transformation Hub Admin → Incubateur International Pro
+
+## 📋 CONTEXTE ACTUEL
+
+Je suis un agent qui vient de créer un backend admin pour gérer des projets dans Next.js. Voici l'architecture actuelle :
+
+### Stack Technique Actuel
+- **Frontend**: Next.js 15 (App Router) + React 19 + TypeScript + Tailwind CSS
+- **Backend**: Next.js API Routes intégrées
+- **Database**: SQLite (better-sqlite3)
+- **Auth**: JWT + bcryptjs
+- **Services**: ProjectService (CRUD complet)
+
+### Structure Actuelle de la Base de Données
+
+```sql
+-- Table PROJECTS (13 projets actuellement)
+CREATE TABLE projects (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  status TEXT CHECK(status IN ('live', 'coming', 'future', 'archived')),
+  category TEXT NOT NULL,
+  description TEXT NOT NULL,
+  tech_stack TEXT NOT NULL,  -- JSON array
+  port INTEGER,
+  urls TEXT,                 -- JSON object
+  logo TEXT,
+  screenshots TEXT,          -- JSON array
+  location TEXT NOT NULL,
+  features TEXT,             -- JSON array
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now')),
+  published INTEGER DEFAULT 1,
+  order_index INTEGER DEFAULT 0
+);
+
+-- Table MEDIA (préparée, non utilisée)
+CREATE TABLE media (
+  id TEXT PRIMARY KEY,
+  project_id TEXT NOT NULL,
+  type TEXT CHECK(type IN ('logo', 'screenshot', 'banner')),
+  filename TEXT NOT NULL,
+  path TEXT NOT NULL,
+  url TEXT NOT NULL,
+  size INTEGER NOT NULL,
+  created_at TEXT DEFAULT (datetime('now')),
+  FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
+);
+
+-- Table USERS (admin simple)
+CREATE TABLE users (
+  id TEXT PRIMARY KEY,
+  username TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  role TEXT DEFAULT 'admin',
+  created_at TEXT DEFAULT (datetime('now'))
+);
+```
+
+### API Routes Existantes
+
+**Auth:**
+- `POST /api/auth/login` - Login JWT
+- `GET /api/auth/me` - User info
+
+**Projects:**
+- `GET /api/projects` - Liste (filtres: status, published)
+- `POST /api/projects` - Créer
+- `GET /api/projects/:id` - Détail
+- `PATCH /api/projects/:id` - Modifier
+- `DELETE /api/projects/:id` - Supprimer
+- `POST /api/projects/:id/publish` - Publier
+- `POST /api/projects/:id/unpublish` - Dépublier
+- `GET /api/projects/statistics` - Stats globales
+
+### Dashboard Admin Actuel (React)
+
+Fonctionnalités basiques :
+- Login/Logout
+- Tableau de bord avec stats (Total, Publiés, Live, Coming)
+- Liste des projets avec filtres par status
+- Actions : Publier/Dépublier/Supprimer
+- Design moderne avec Tailwind
+
+### Structure Fichiers
+
+```
+Hub/
+├── app/
+│   ├── admin/
+│   │   └── page.tsx              # Dashboard React simple
+│   └── api/
+│       ├── auth/
+│       │   ├── login/route.ts
+│       │   └── me/route.ts
+│       └── projects/
+│           ├── route.ts
+│           ├── [id]/route.ts
+│           ├── [id]/publish/route.ts
+│           ├── [id]/unpublish/route.ts
+│           └── statistics/route.ts
+├── lib/
+│   ├── db.ts            # SQLite init + connection
+│   ├── auth.ts          # JWT auth middleware
+│   ├── projects.ts      # ProjectService
+│   └── types.ts         # TypeScript interfaces
+└── data/
+    └── projects.db      # SQLite database
+```
+
+---
+
+## 🎯 MISSION AGENT
+
+Tu es un **expert en plateformes d'incubation internationales** (Y Combinator, Techstars, 500 Startups, Station F).
+
+Je veux transformer ce simple admin en **LE PLUS GRAND HUB D'INCUBATION DE PROJETS TECHNOLOGIQUES AU MONDE**.
+
+### Objectif Final
+
+Créer une plateforme complète pour gérer l'**incubation professionnelle de projets tech** avec :
+
+1. **Suivi de progression par étapes** (Pipeline d'incubation)
+2. **Système de notation/scoring** des projets
+3. **Gestion des dépôts** (GitHub, ressources, documents)
+4. **Métriques et KPIs** de performance
+5. **Workflow d'approbation** entre étapes
+6. **Dashboard analytics** avancé
+7. **Multi-utilisateurs** avec rôles (Founder, Mentor, Investor, Admin)
+8. **Timeline** et historique complet
+
+---
+
+## ❓ QUESTIONS À RÉPONDRE
+
+### 1. Architecture Base de Données
+
+**Question:** Quelle structure de base de données complète me recommandes-tu pour un vrai incubateur ?
+
+Détaille :
+- Tables nécessaires (projets, étapes, notations, utilisateurs, équipes, métriques, etc.)
+- Relations entre tables (FK, many-to-many, etc.)
+- Champs critiques pour chaque table
+- Indices pour performance
+- Est-ce que SQLite suffit ou faut-il migrer vers PostgreSQL ?
+
+### 2. Pipeline d'Incubation (Étapes)
+
+**Question:** Quels sont les **steps/stages standards** d'un incubateur international professionnel ?
+
+Par exemple :
+- Application/Candidature
+- Screening Initial
+- Interview
+- Validation Comité
+- Incubation Active
+- Demo Day Prep
+- Graduation
+- Alumni/Post-incubation
+
+Pour chaque étape :
+- Critères de validation ?
+- Livrables requis ?
+- Durée typique ?
+- KPIs à suivre ?
+
+### 3. Système de Notation/Scoring
+
+**Question:** Comment noter/scorer les projets de manière professionnelle ?
+
+Propose :
+- Critères de notation (Équipe, Market, Traction, Tech, Business Model, etc.)
+- Échelle de notation (1-10, A-F, custom ?)
+- Qui note ? (Mentors, Investors, Peer review ?)
+- Pondération des critères
+- Scoring automatique vs manuel
+- Système de feedback structuré
+
+### 4. Gestion des Dépôts & Resources
+
+**Question:** Comment gérer efficacement les repos GitHub et ressources ?
+
+- Intégration GitHub API (commits, PRs, issues, activity)
+- Stockage de documents (pitch deck, business plan, contrats)
+- Gestion des credentials (API keys, secrets)
+- Versioning des deliverables
+- Upload de fichiers (limite taille, formats acceptés)
+
+### 5. Métriques & KPIs
+
+**Question:** Quels KPIs et métriques sont essentiels pour un incubateur ?
+
+Pour les projets :
+- Métriques techniques (commits/semaine, uptime, code quality)
+- Métriques business (users, revenue, growth rate)
+- Métriques de progression (% completion par étape)
+
+Pour l'incubateur :
+- Taux d'acceptation
+- Taux de réussite
+- Temps moyen par étape
+- ROI investisseurs
+
+### 6. Multi-Users & Permissions
+
+**Question:** Quelle structure de rôles et permissions pour un incubateur ?
+
+Rôles à considérer :
+- **Super Admin** : Contrôle total
+- **Admin** : Gestion quotidienne
+- **Mentor** : Accompagnement projets, notation
+- **Investor** : Lecture + notation
+- **Founder** : Son projet uniquement
+- **Reviewer** : Screening initial
+
+Permissions par rôle ? RBAC détaillé ?
+
+### 7. Workflow d'Approbation
+
+**Question:** Comment gérer les transitions entre étapes ?
+
+- Système d'approbation (qui approuve quoi ?)
+- Notifications (email, in-app, Slack ?)
+- Commentaires/feedback lors des reviews
+- Historique des décisions
+- Rejets et réapplications
+
+### 8. Dashboard Analytics Avancé
+
+**Question:** Quel dashboard pour les différents profils utilisateur ?
+
+Pour Admin :
+- Vue globale incubateur
+- Funnel de conversion
+- Performance par cohorte
+- Alertes et actions requises
+
+Pour Founders :
+- Progression de leur projet
+- Feedback reçu
+- Prochaines étapes
+- Ressources disponibles
+
+Pour Mentors/Investors :
+- Projets assignés
+- Tâches à reviewer
+- Comparaison projets
+
+### 9. Features Avancées
+
+**Question:** Quelles fonctionnalités "wow" pour se démarquer ?
+
+Idées à valider :
+- AI-powered scoring/recommendations
+- Intégration Slack/Discord pour communication
+- Matching automatique Mentor-Project
+- Calendrier intégré (meetings, deadlines, demo days)
+- Reporting automatique (PDF/Excel export)
+- Public portfolio page pour chaque projet
+- Investor portal avec deal flow
+- API publique pour partenaires
+
+### 10. Stack Technique
+
+**Question:** Dois-je garder ma stack actuelle ou upgrader ?
+
+Évalue :
+- Next.js API Routes vs Backend dédié (Express, Fastify)
+- SQLite vs PostgreSQL vs MongoDB
+- Auth JWT simple vs Auth0/Clerk/Supabase Auth
+- File storage local vs S3/Cloudinary
+- Real-time features (WebSocket, Pusher, Supabase Realtime)
+- Queue system pour jobs (BullMQ, etc.)
+- Monitoring/Logging (Sentry, LogRocket)
+
+---
+
+## 📦 LIVRABLES ATTENDUS
+
+Fournis-moi :
+
+1. **Schéma complet de la base de données** (SQL ou ERD)
+2. **Liste exhaustive des API endpoints** à créer
+3. **Structure de fichiers** recommandée
+4. **Roadmap de développement** par ordre de priorité
+5. **Exemples de code** pour les parties critiques
+6. **Checklist de sécurité** (RGPD, OWASP, etc.)
+7. **Plan de migration** depuis mon système actuel
+
+---
+
+## 🎨 INSPIRATIONS
+
+Inspire-toi de ces plateformes de référence :
+
+- **Y Combinator** : https://www.ycombinator.com
+- **Techstars** : https://www.techstars.com
+- **500 Startups** : https://500.co
+- **Station F** : https://stationf.co
+- **AngelList** : Deal flow et fundraising
+- **Product Hunt** : Rating et discovery
+
+---
+
+## ⚡ CONTRAINTES
+
+- Must remain **Next.js 15** (pas de changement de framework)
+- Doit être **self-hosted** (pas de dépendances cloud obligatoires)
+- Performance : Support de **1000+ projets** sans ralentissement
+- Sécurité : **Production-grade** (auth, permissions, validation)
+- UX : **Moderne et intuitive** (Tailwind + shadcn/ui acceptable)
+
+---
+
+## 🚀 ACTION IMMÉDIATE
+
+Commence par :
+
+1. **Analyser mon système actuel** et pointer les gaps critiques
+2. **Proposer un schéma DB complet** avec toutes les tables
+3. **Définir les 5 features prioritaires** à implémenter en premier
+4. **Donner un plan d'action semaine par semaine** pour arriver à un MVP incubateur fonctionnel
+
+---
+
+## 💬 TON RÔLE
+
+Tu es l'expert, je suis l'exécutant. 
+
+- Sois **précis et technique**
+- Donne des **exemples concrets**
+- **Challenge mes choix** actuels si nécessaire
+- Propose des **alternatives argumentées**
+- Pense **scalabilité et maintenance** long terme
+
+**Go ! 🔥**
