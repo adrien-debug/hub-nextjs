@@ -42,14 +42,32 @@ Hub/
 ├── app/
 │   ├── api/          # API Routes
 │   ├── layout.tsx    # Layout principal
-│   ├── page.tsx      # Page d'accueil
+│   ├── page.tsx      # Page d'accueil (orchestration des sections)
 │   └── globals.css   # Styles globaux
-├── public/           # Fichiers statiques
+├── components/
+│   ├── Hero.tsx      # Section Hero avec gradient animé
+│   ├── About.tsx     # Section "Qui nous sommes"
+│   ├── Methodology.tsx # Sections méthode d'incubation & maîtrise
+│   ├── ProjectsLive.tsx # 5 projets LIVE (Onyx Pay, WeMine, NetPool, Agora, Bull21)
+│   ├── ProjectsComing.tsx # 2 projets COMING (Thynk, Atlas)
+│   └── Footer.tsx    # Footer avec liens et socials
+├── public/
+│   └── grid.svg      # Background pattern pour Hero
+├── proxy-server.js   # Serveur proxy pour port 6000
 ├── package.json      # Dépendances
 ├── tsconfig.json     # Config TypeScript
 ├── tailwind.config.ts # Config Tailwind
 └── next.config.ts    # Config Next.js
 ```
+
+## Sections
+
+1. **Hero** - Grande section d'accueil avec tagline et CTA
+2. **About** - Explication de Hearst et statistiques clés
+3. **Methodology** - Processus d'incubation et maîtrise opérationnelle
+4. **Projects Live** - 5 projets opérationnels avec descriptions
+5. **Projects Coming** - 2 projets en développement (pipeline)
+6. **Footer** - Navigation, liens sociaux et légal
 
 ## URL
 
