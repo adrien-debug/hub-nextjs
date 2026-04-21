@@ -59,6 +59,19 @@ export function initializeDatabase() {
       );
       
       logger.info('Default admin user created (username: admin, password: admin123)');
+
+      const adrienPassword = bcrypt.hashSync('Adrien0334$$', 10);
+      db.prepare(`
+        INSERT INTO users (id, username, email, password_hash, role)
+        VALUES (?, ?, ?, ?, ?)
+      `).run(
+        nanoid(),
+        'adrien@hearstcorporation.io',
+        'adrien@hearstcorporation.io',
+        adrienPassword,
+        'admin'
+      );
+      logger.info('Super admin user created (adrien@hearstcorporation.io)');
     }
 
     // Seed phases
