@@ -4,16 +4,6 @@ import HubLogo from '@/components/HubLogo';
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-between bg-dark px-6 md:px-12 lg:px-24 py-12 overflow-hidden">
-      {/* Grille SVG ultra-fine (2% opacité) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.02]" 
-           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '6rem 6rem' }}>
-      </div>
-
-      {/* Ambient System Glow */}
-      <div className="absolute top-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-accent opacity-[0.015] blur-[150px] rounded-full pointer-events-none"></div>
-
-      {/* Ligne réseau animée (signal système renforcé) */}
-      <div className="absolute top-0 left-[15%] w-px h-[200%] bg-gradient-to-b from-transparent via-accent/60 to-transparent animate-flow-y pointer-events-none"></div>
 
       <header className="relative z-10 flex justify-between items-start">
         <HubLogo textColor="#ffffff" className="h-12 md:h-16" />
