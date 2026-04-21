@@ -27,14 +27,18 @@ Plateforme centralisée de gestion des projets Hearst avec système d'incubation
 ```
 Hub/
 ├── app/
-│   ├── api/                 # REST Next (projets, auth, incubation)
+│   ├── api/                 # REST Next (projets, auth, incubation, github, vercel)
 │   ├── admin/
+│   │   ├── layout.tsx       # Layout sidebar + auth
+│   │   ├── auth-context.tsx # Contexte auth partagé
+│   │   ├── page.tsx         # Projets unifiés (DB + Vercel + GitHub)
+│   │   └── incubation/      # Incubation 28 phases
 │   └── page.tsx
 ├── lib/
 │   ├── db.ts                # SQLite + schéma (projets, médias, incubation)
 │   ├── auth.ts
 │   └── incubation.ts
-├── components/              # IncubationPipeline = UI statique (données API dispo via GET /api/incubation/phases)
+├── components/              # Hero, About, Methodology, ActDesign, ProjectsLive, ProjectsComing, Footer
 ├── data/projects.db
 └── api/                     # Express optionnel (routes + services miroir)
     └── src/

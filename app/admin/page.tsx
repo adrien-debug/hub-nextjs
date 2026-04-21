@@ -32,6 +32,12 @@ interface UnifiedProject {
   hasDb: boolean;
 }
 
+const STATUS_BADGE: Record<string, string> = {
+  live: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+  coming: 'bg-amber-50 text-amber-700 border-amber-200',
+  future: 'bg-blue-50 text-blue-700 border-blue-200',
+  archived: 'bg-slate-100 text-slate-500 border-slate-200',
+};
 const DEPLOY_STATE: Record<string, { bg: string; text: string; label: string }> = {
   READY: { bg: 'bg-emerald-50', text: 'text-emerald-700', label: 'Live' },
   BUILDING: { bg: 'bg-amber-50', text: 'text-amber-700', label: 'Building' },
@@ -214,7 +220,7 @@ export default function AdminProjects() {
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
             <SectionTitle title="Déploiements" count={deployments.length} />
             {!p.vercel ? (
-              <p className="text-sm text-slate-400 mt-4">Ce projet n'est pas connecté à Vercel — aucun déploiement disponible.</p>
+              <p className="text-sm text-slate-400 mt-4">Ce projet n&apos;est pas connecté à Vercel — aucun déploiement disponible.</p>
             ) : deploymentsLoading ? (
               <p className="text-sm text-slate-400 mt-4">Chargement...</p>
             ) : deployments.length === 0 ? (
@@ -374,10 +380,3 @@ function LinkRow({ label, url, fallback, text }: { label: string; url: string | 
     </div>
   );
 }
-
-const STATUS_BADGE: Record<string, string> = {
-  live: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-  coming: 'bg-amber-50 text-amber-700 border-amber-200',
-  future: 'bg-blue-50 text-blue-700 border-blue-200',
-  archived: 'bg-slate-100 text-slate-500 border-slate-200',
-};
