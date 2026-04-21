@@ -13,7 +13,7 @@ if (!fs.existsSync(DB_DIR)) {
 }
 
 // Initialiser la base de données
-export const db = new Database(DB_PATH, {
+export const db: import('better-sqlite3').Database = new Database(DB_PATH, {
   verbose: process.env.NODE_ENV === 'development' ? logger.debug.bind(logger) : undefined,
 });
 

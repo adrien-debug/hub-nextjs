@@ -161,8 +161,10 @@ API_KEY=your-api-key
 
 ## 🛠️ Tech Stack
 
-- **Backend** : Express, TypeScript, SQLite (better-sqlite3)
 - **Frontend** : Next.js 15, React 19, TailwindCSS
+- **Backend local** : SQLite (better-sqlite3) via `lib/db.ts`
+- **Backend cloud** : Express sur [Railway](https://hub-incubator-api-production.up.railway.app/api/health)
+- **Database cloud** : PostgreSQL sur [Supabase](https://supabase.com/dashboard/project/xyavsskrzuthgnotbqjm) (schéma identique, 13 projets + 28 phases + admin seedés)
 - **Auth** : JWT, bcrypt
 - **Validation** : Zod
 - **Logs** : Winston
