@@ -6,6 +6,7 @@ export interface Project {
   slug: string;
   status: ProjectStatus;
   category: string;
+  tagline?: string;
   description: string;
   tech_stack: string[];
   port?: number;

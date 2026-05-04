@@ -126,6 +126,7 @@ export class ProjectService {
       slug: row.slug,
       status: row.status,
       category: row.category,
+      tagline: row.tagline || '',
       description: row.description,
       tech_stack: JSON.parse(row.tech_stack),
       port: row.port,

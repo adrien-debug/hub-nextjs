@@ -24,6 +24,9 @@
 *.db-shm
 *.db-wal
 
+# Runtime contact submissions
+/data/contacts.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*
